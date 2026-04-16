@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonials — Mshimba Hardware</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange:       #E8650A;
+  --orange-light: #FF8C3A;
+  --orange-dim:   #3D1C05;
+  --dark:         #0F0E0D;
+  --dark2:        #1A1917;
+  --dark3:        #252320;
+  --steel:        #2E2C28;
+  --text:         #F0EDE8;
+  --muted:        #888580;
+  --muted2:       #bebbb5;
+  --border:       rgba(255,255,255,0.08);
+  --card:         #1C1B18;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--dark);
+  color: var(--text);
+}
+
+/* ─── SECTION ─── */
+#section-testimonials {
+  padding: 80px 2rem;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(232,101,10,0.10) 0%, transparent 60%),
+    #0b0b0a;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--orange);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.section-sub {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 3rem;
+}
+
+/* ─── SLIDER SHELL ─── */
+.t-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* left / right fade masks */
+.t-slider::before,
+.t-slider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+.t-slider::before {
+  left: 0;
+  background: linear-gradient(to right, #0b0b0a, transparent);
+}
+.t-slider::after {
+  right: 0;
+  background: linear-gradient(to left, #0b0b0a, transparent);
+}
+
+/* ─── TRACK ─── */
+.t-track {
+  display: flex;
+  gap: 20px;
+  /* transition driven by JS — set via style.transitionDuration */
+  will-change: transform;
+}
+
+/* ─── CARD ─── */
+.t-card {
+  flex: 0 0 var(--card-w, 340px); /* JS overrides --card-w on resize */
+  background: linear-gradient(160deg, #171614 0%, #1f1d1a 100%);
+  border: 1px solid rgba(232,101,10,0.18);
+  border-radius: 14px;
+  padding: 28px 28px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+  cursor: default;
+  user-select: none;
+}
+
+.t-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at 20% 15%, rgba(232,101,10,0.10), transparent 55%);
+  pointer-events: none;
+}
+
+.t-card:hover {
+  border-color: rgba(232,101,10,0.5);
+  transform: translateY(-4px);
+}
+
+/* quote mark */
+.t-card-quote {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  color: rgba(232,101,10,0.20);
+  line-height: 1;
+  margin-bottom: -4px;
+  display: block;
+}
+
+.t-stars {
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #FFD700;
+  margin-bottom: 14px;
+}
+
+.t-text {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--muted2);
+  font-style: italic;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.t-author {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--orange);
+  margin-bottom: 2px;
+}
+
+.t-role {
+  font-size: 11px;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.5px;
+}
+
+/* ─── CONTROLS ─── */
+.t-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.t-arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(232,101,10,0.3);
+  background: transparent;
+  color: var(--orange);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.t-arrow:hover {
+  background: rgba(232,101,10,0.12);
+  border-color: var(--orange);
+}
+.t-arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+  pointer-events: none;
+}
+
+.t-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.t-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s;
+  padding: 0;
+}
+.t-dot:hover  { background: var(--orange-light); transform: scale(1.2); }
+.t-dot.active { background: var(--orange); width: 24px; border-radius: 4px; }
+
+/* ─── AUTOPLAY PROGRESS BAR ─── */
+.t-progress-wrap {
+  height: 2px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+.t-progress-bar {
+  height: 100%;
+  background: var(--orange);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  #section-testimonials { padding: 60px 1.25rem; }
+  .t-slider::before, .t-slider::after { width: 28px; }
+}
+</style>
+</head>
+<body>
+
+<section id="section-testimonials">
+  <div class="container">
+    <div class="section-tag">MAONI YA WATEJA</div>
+    <h2 class="section-title">WANASEMA NINI</h2>
+    <p class="section-sub">Wateja wetu wanasema nini kuhusu huduma na bidhaa zetu.</p>
+
+    <!-- Slider -->
+    <div class="t-slider" id="tSlider">
+      <div class="t-track" id="tTrack"></div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="t-progress-wrap">
+      <div class="t-progress-bar" id="tProgress"></div>
+    </div>
+
+    <!-- Controls -->
+    <div class="t-controls">
+      <button class="t-arrow" id="tPrev" aria-label="Nyuma">&#8592;</button>
+      <div class="t-dots" id="tDots"></div>
+      <button class="t-arrow" id="tNext" aria-label="Mbele">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<script>
+const DATA = [
+  { stars:5, text:"Duka bora sana! Wamenipatia bidhaa za ubora na bei nzuri. Nitarudi tena.",       author:"Juma Hassan",      role:"Mjumbe · Paje" },
+  { stars:5, text:"Walimsaidia kupata vile nilichohitaji haraka sana. Huduma ya kwanza kabisa!",    author:"Fatima Ali",       role:"Mjenzi · Zanzibar" },
+  { stars:5, text:"Huduma bora, bidhaa nzuri, na timu yenye ujuzi. Karibu kwa kila mjumbe.",       author:"Ahmed Ibrahim",    role:"Mwalimu · Paje" },
+  { stars:5, text:"Ujuzi wao ni wa kipekee! Wanajua bidhaa na wanatusaidia kuchagua vizuri.",      author:"Mariam Omar",      role:"Mfanya Biashara · Stone Town" },
+  { stars:5, text:"Bei zao ni nzuri na bidhaa ni za asili. Nimekuwa nikinunua hapa kwa muda.",    author:"Suleiman Makame",  role:"Mwenye Nyumba · Paje" },
+  { stars:5, text:"Wanaheshimu wateja wao. Daima wanakupa huduma ya kwanza kabisa.",               author:"Aisha Bakari",     role:"Mameneja · Zanzibar" },
+  { stars:5, text:"Ninapenda jinsi wanavyojali mazingira. Duka lao ni safi na lililotengwa vizuri.",author:"Omar Hassan",     role:"Mteja wa Kudumu · Paje" },
+  { stars:5, text:"Wanauza bidhaa za kudumu nilizozitumia kwa miaka mingi bila matatizo.",         author:"Khadija Ali",      role:"Mjengo · Paje" },
+  { stars:5, text:"Msaada wao wa kiufundi ni bora. Wanatusaidia hata kwenye usakinishaji.",       author:"Ali Mwalimu",      role:"Fundi wa Umeme · Zanzibar" },
+];
+
+const INTERVAL   = 4000;
+const TRANSITION = 420;
+
+class Testimonials {
+  constructor() {
+    this.track    = document.getElementById('tTrack');
+    this.slider   = document.getElementById('tSlider');
+    this.dotsEl   = document.getElementById('tDots');
+    this.prevBtn  = document.getElementById('tPrev');
+    this.nextBtn  = document.getElementById('tNext');
+    this.progress = document.getElementById('tProgress');
+
+    this.index     = 0;
+    this.perView   = 3;
+    this.cardW     = 0;
+    this.gap       = 20;
+    this.total     = DATA.length;
+    this.timer     = null;
+    this.progTimer = null;
+    this.progStart = null;
+    this.dragging  = false;
+    this.dragStart = 0;
+    this.dragDelta = 0;
+
+    this._build();
+    this._resize();
+    this._bindEvents();
+    this._startAuto();
+
+    window.addEventListener('resize', () => this._resize());
+  }
+
+  get pages() { return Math.ceil(this.total / this.perView); }
+
+  _build() {
+    // Render cards
+    this.track.innerHTML = DATA.map(d => `
+      <div class="t-card">
+        <span class="t-card-quote">"</span>
+        <div class="t-stars">${'★'.repeat(d.stars)}</div>
+        <p class="t-text">${d.text}</p>
+        <div class="t-author">${d.author}</div>
+        <div class="t-role">${d.role}</div>
+      </div>
+    `).join('');
+
+    this.cards = Array.from(this.track.children);
+  }
+
+  _resize() {
+    const sliderW = this.slider.offsetWidth;
+
+    // Determine perView based on width
+    if      (sliderW < 500) this.perView = 1;
+    else if (sliderW < 820) this.perView = 2;
+    else                    this.perView = 3;
+
+    // Card width = fill slider minus gaps between visible cards
+    this.cardW = (sliderW - this.gap * (this.perView - 1)) / this.perView;
+
+    // Apply card widths
+    this.cards.forEach(c => { c.style.flex = `0 0 ${this.cardW}px`; });
+
+    // Clamp index to valid page
+    const maxIdx = Math.max(0, this.total - this.perView);
+    if (this.index > maxIdx) this.index = maxIdx;
+
+    this._buildDots();
+    this._render(false); // no animation on resize
+  }
+
+  _buildDots() {
+    const p = this.pages;
+    this.dotsEl.innerHTML = Array.from({length: p}, (_, i) =>
+      `<button class="t-dot${i === this._page ? ' active' : ''}" data-i="${i}" aria-label="Ukurasa ${i+1}"></button>`
+    ).join('');
+  }
+
+  get _page() { return Math.round(this.index / this.perView); }
+
+  _render(animate = true) {
+    const offset = this.index * (this.cardW + this.gap);
+    this.track.style.transition = animate ? `transform ${TRANSITION}ms cubic-bezier(0.25,0.46,0.45,0.94)` : 'none';
+    this.track.style.transform  = `translateX(-${offset}px)`;
+
+    // Update dots
+    const dots = this.dotsEl.querySelectorAll('.t-dot');
+    const page = this._page;
+    dots.forEach((d, i) => d.classList.toggle('active', i === page));
+
+    // Disable arrows at edges
+    this.prevBtn.disabled = this.index === 0;
+    this.nextBtn.disabled = this.index >= this.total - this.perView;
+  }
+
+  _goTo(newIndex) {
+    const max = Math.max(0, this.total - this.perView);
+    this.index = Math.max(0, Math.min(newIndex, max));
+    this._render(true);
+    this._restartAuto();
+  }
+
+  _goToPage(page) {
+    this._goTo(page * this.perView);
+  }
+
+  _next() {
+    const max = this.total - this.perView;
+    this._goTo(this.index >= max ? 0 : this.index + 1);
+  }
+
+  _prev() {
+    const max = this.total - this.perView;
+    this._goTo(this.index <= 0 ? max : this.index - 1);
+  }
+
+  // ── Autoplay + progress bar ──
+  _startAuto() {
+    this._clearAuto();
+    this.progStart = Date.now();
+    this._animProgress();
+    this.timer = setInterval(() => this._next(), INTERVAL);
+  }
+
+  _clearAuto() {
+    clearInterval(this.timer);
+    cancelAnimationFrame(this.progTimer);
+    this.progress.style.transition = 'none';
+    this.progress.style.width = '0%';
+  }
+
+  _restartAuto() {
+    this._clearAuto();
+    // small delay so transition reset takes effect
+    setTimeout(() => this._startAuto(), 16);
+  }
+
+  _animProgress() {
+    const elapsed = Date.now() - this.progStart;
+    const pct = Math.min((elapsed / INTERVAL) * 100, 100);
+    this.progress.style.transition = 'none';
+    this.progress.style.width = pct + '%';
+    if (pct < 100) {
+      this.progTimer = requestAnimationFrame(() => this._animProgress());
+    }
+  }
+
+  // ── Touch / drag ──
+  _bindEvents() {
+    this.nextBtn.addEventListener('click', () => this._next());
+    this.prevBtn.addEventListener('click', () => this._prev());
+
+    this.dotsEl.addEventListener('click', e => {
+      const btn = e.target.closest('.t-dot');
+      if (btn) this._goToPage(+btn.dataset.i);
+    });
+
+    // Keyboard
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  this._prev();
+      if (e.key === 'ArrowRight') this._next();
+    });
+
+    // Mouse drag
+    this.track.addEventListener('mousedown',  e => this._dragStart(e.clientX));
+    window.addEventListener('mousemove', e => { if (this.dragging) this._dragMove(e.clientX); });
+    window.addEventListener('mouseup',   ()  => { if (this.dragging) this._dragEnd(); });
+
+    // Touch drag
+    this.track.addEventListener('touchstart', e => this._dragStart(e.touches[0].clientX), {passive:true});
+    this.track.addEventListener('touchmove',  e => { if (this.dragging) this._dragMove(e.touches[0].clientX); }, {passive:true});
+    this.track.addEventListener('touchend',   ()  => { if (this.dragging) this._dragEnd(); });
+
+    // Pause on hover
+    this.slider.addEventListener('mouseenter', () => this._clearAuto());
+    this.slider.addEventListener('mouseleave', () => this._restartAuto());
+  }
+
+  _dragStart(x) {
+    this.dragging  = true;
+    this.dragStart = x;
+    this.dragDelta = 0;
+    this.track.style.transition = 'none';
+    this._clearAuto();
+  }
+
+  _dragMove(x) {
+    this.dragDelta = x - this.dragStart;
+    const base   = this.index * (this.cardW + this.gap);
+    this.track.style.transform = `translateX(${-base + this.dragDelta}px)`;
+  }
+
+  _dragEnd() {
+    this.dragging = false;
+    const threshold = this.cardW * 0.2; // 20% of card width
+    if      (this.dragDelta < -threshold) this._next();
+    else if (this.dragDelta >  threshold) this._prev();
+    else                                   this._render(true);
+    this._restartAuto();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => new Testimonials());
+</script>
+</body>
+</html>

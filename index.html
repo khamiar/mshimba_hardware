@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSHIMBA HARDWARE – Paje, Zanzibar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+
+  <!-- ══════════════ PUBLIC SITE ══════════════ -->
+  <div id="public-view" class="view active">
+
+    <!-- NAV -->
+    <nav>
+      <div class="nav-inner">
+        <div class="logo" onclick="showSection('home')">
+          <div class="logo-icon">MH</div>
+          <div>
+            <div class="logo-text">MSHIMBA</div>
+            <div class="logo-sub">HARDWARE · PAJE</div>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#section-home" class="active" id="nav-home">Home</a>
+          <a href="#section-about" id="nav-about">About</a>
+          <a href="#section-categories" id="nav-categories">Products</a>
+          <a href="#section-products" id="nav-products">Shop</a>
+          <a href="#section-contact" id="nav-contact">Contact</a>
+        </div>
+        <div style="display:flex;gap:0.75rem;align-items:center;">
+          <a class="nav-cta" href="admin/login.html">Admin</a>
+          <div class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <button class="close-menu" onclick="toggleMobile()">✕</button>
+      <a href="#section-home" onclick="toggleMobile()">HOME</a>
+      <a href="#section-about" onclick="toggleMobile()">ABOUT</a>
+      <a href="#section-categories" onclick="toggleMobile()">PRODUCTS</a>
+      <a href="#section-products" onclick="toggleMobile()">SHOP</a>
+      <a href="#section-contact" onclick="toggleMobile()">CONTACT</a>
+      <a href="./admin/login.html" onclick="toggleMobile()">ADMIN</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="section-home">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+      <div class="hero-content">
+        <div class="hero-badge">📍 PAJE, ZANZIBAR · OPEN 7 DAYS</div>
+        <h1>MSHIMBA<br><span>HARD</span>WARE</h1>
+        <p class="hero-desc">-> Your trusted destination for construction materials and professional tools in Paje,
+          Zanzibar. We supply quality building materials, tools, plumbing solutions, and electrical supplies for every
+          project.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="showSection('products')">Explore Products</button>
+          <button class="btn-outline" onclick="showSection('contact')">Contact Us</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num" id="stat-products">0</div>
+            <div class="stat-label">PRODUCTS</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">4+</div>
+            <div class="stat-label">CATEGORY</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">7</div>
+            <div class="stat-label">DAYS A WEEK</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section id="section-about">
+      <div class="container">
+        <div class="section-tag">ABOUT US</div>
+
+        <div class="about-content">
+          <div class="about-text">
+            <h2 class="section-title">MSHIMBA <span style="color: var(--orange);">HARDWARE</span></h2>
+            <p class="section-sub" style="margin-bottom: 2rem;">
+              -> We provide reliable construction solutions in Paje, Zanzibar. With years of experience, we ensure every
+              contractor, builder, and homeowner gets premium products at competitive prices.
+            </p>
+
+            <div class="about-block">
+              <h3>📖 Our Story</h3>
+              <p>-> Since our establishment, Mshimba Hardware has proudly served the Paje community. We are honored to
+                contribute to Zanzibar’s growth by supplying durable and dependable materials.
+              </p>
+            </div>
+
+            <div class="about-block">
+              <h3>🎯 Mission & Vision</h3>
+              <p>-> Our goal is to be the leading hardware store in Zanzibar, providing high-quality tools and materials
+                for construction, plumbing, and electrical work.</p>
+            </div>
+
+            <div class="hero-stats" style="margin-top: 2rem; border-top: 1px solid var(--border);">
+              <div class="stat-item">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">QUALITY PRODUCTS</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">PAJE</div>
+                <div class="stat-label">OUR LOCATION</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-features">
+            <div class="feature-card">
+              <div class="feature-icon">✓</div>
+              <div class="feature-text">
+                <div class="feature-title">International Products</div>
+                <div class="feature-desc">We collaborate with leading manufacturers to ensure you get products with
+                  high standards.</div>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">✓</div>
+              <div class="feature-text">
+                <div class="feature-title">Competitive Pricing</div>
+                <div class="feature-desc">We ensure you get the best value for your money with prices that are
+                  unbeatable in the market.</div>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">✓</div>
+              <div class="feature-text">
+                <div class="feature-title">Expert Advice</div>
+                <div class="feature-desc">Our team has the knowledge to guide you in selecting the right tools for your
+                  needs.</div>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">✓</div>
+              <div class="feature-text">
+                <div class="feature-title">Quick Availability</div>
+                <div class="feature-desc">Our store is located in a safe area and has a wide range of products (stock)
+                  available at all times for your convenience.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-categories">
+      <div class="container">
+        <div class="section-tag">CATEGORIES</div>
+        <h2 class="section-title">PRODUCT CATEGORIES</h2>
+        <p class="section-sub">Discover our curated selection of tools and materials for your construction and
+          renovation projects.</p>
+
+        <div class="categories-grid">
+
+          <div class="cat-card" onclick="filterAndGo('Ujenzi')">
+            <div class="cat-count" id="cnt-ujenzi">0 products</div>
+            <div class="cat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" style="color: var(--orange);">
+                <path d="M20 20V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v16" />
+                <path d="M4 8h16" />
+                <path d="M4 12h16" />
+                <path d="M4 16h16" />
+              </svg>
+            </div>
+            <div class="cat-name">CONSTRUCTION & BUILDING</div>
+            <div class="cat-desc">From the highest quality materials to the most advanced tools. Everything you need for
+              a solid foundation.</div>
+          </div>
+
+          <div class="cat-card" onclick="filterAndGo('Zana')">
+            <div class="cat-count" id="cnt-zana">0 products</div>
+            <div class="cat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" style="color: var(--orange);">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a2 2 0 0 1-2.83-2.83l-3.94 3.6z" />
+                <path d="m21 21-8.5-8.5" />
+                <path d="M10.14 12.67c.62.07 1.25.07 1.86 0" />
+                <path d="m18.5 5.5-2.37 2.37" />
+                <path d="M3 21v-3l11-11 3 3-11 11H3Z" />
+              </svg>
+            </div>
+            <div class="cat-name">POWER TOOLS</div>
+            <div class="cat-desc">Hand tools and power tools from leading brands for professional use.</div>
+          </div>
+
+          <div class="cat-card" onclick="filterAndGo('Maji')">
+            <div class="cat-count" id="cnt-maji">0 products</div>
+            <div class="cat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" style="color: var(--orange);">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+              </svg>
+            </div>
+            <div class="cat-name">PLUMBING</div>
+            <div class="cat-desc">Modern pipes, fittings, and accessories for clean water and drainage systems.
+            </div>
+          </div>
+
+          <div class="cat-card" onclick="filterAndGo('Umeme')">
+            <div class="cat-count" id="cnt-umeme">0 products</div>
+            <div class="cat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" style="color: var(--orange);">
+                <path d="M13 2 L3 14 L12 14 L11 22 L21 10 L12 10 Z" />
+              </svg>
+            </div>
+            <div class="cat-name">ELECTRICAL SOLUTIONS</div>
+            <div class="cat-desc">Complete wiring solutions including cables, breakers, switches, and stylish LED
+              lighting.
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </section>
+    <!-- PRODUCTS -->
+    <section id="section-products" style="background:var(--dark2);">
+      <div class="container">
+        <div class="section-tag">OUR STORE</div>
+        <h2 class="section-title">ALL PRODUCTS</h2>
+        <div class="filter-bar">
+          <button class="filter-btn active" onclick="setFilter('All',this)">All</button>
+          <button class="filter-btn" onclick="setFilter('Ujenzi',this)">Building</button>
+          <button class="filter-btn" onclick="setFilter('Zana',this)">Tools</button>
+          <button class="filter-btn" onclick="setFilter('Maji',this)">Plumbing</button>
+          <button class="filter-btn" onclick="setFilter('Umeme',this)">Electrical</button>
+          <input class="search-input" type="text" placeholder="Find products..." id="searchInput"
+            oninput="renderProducts()">
+        </div>
+        <div class="products-grid" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="section-testimonials">
+      <div class="container">
+        <div class="section-tag">TESTIMONIALS</div>
+        <h2 class="section-title">WHAT OUR CUSTOMERS SAY</h2>
+
+        <!-- Auto-scrolling testimonials container -->
+        <div class="testimonials-wrapper" id="testimonialsWrapper">
+          <div class="testimonials-track" id="testimonialsTrack">
+            <!-- Testimonial cards will be dynamically generated -->
+          </div>
+        </div>
+
+        <!-- Navigation dots -->
+        <div class="testimonials-dots" id="testimonialsDots"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="section-contact">
+      <div class="container">
+        <div class="section-tag">CONTACT</div>
+        <h2 class="section-title">GET IN TOUCH</h2>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div>
+                <div class="info-label">LOCATION</div>
+                <div class="info-val">Paje, Zanzibar, Tanzania<br>Jambiani Road</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">📞</div>
+              <div>
+                <div class="info-label">PHONE</div>
+                <div class="info-val">+255 773 110 509<br>+255 773 110 509</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">🕐</div>
+              <div>
+                <div class="info-label">BUSINESS HOURS</div>
+                <div class="info-val">Monday – Thursday: 8:00 – 18:00<br>Friday: 8:00 – 12:00 => 14:00 – 18:00</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">📧</div>
+              <div>
+                <div class="info-label">EMAIL</div>
+                <div class="info-val">suleimanmshimba@gmail.com</div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <div class="section-tag" style="margin-bottom:1rem;">SEND A MESSAGE</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>YOUR NAME</label>
+                <input type="text" placeholder="Full name">
+              </div>
+              <div class="form-group">
+                <label>PHONE</label>
+                <input type="tel" placeholder="+255 ...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>PRODUCT YOU NEED</label>
+              <select>
+                <option>Select a product</option>
+                <option>Building Materials</option>
+                <option>Hardware Tools</option>
+                <option>Plumbing Fixtures</option>
+                <option>Electrical Supplies</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>MESSAGE</label>
+              <textarea placeholder="Enter your message here..."></textarea>
+            </div>
+            <button class="btn-primary" style="width:100%;" onclick="submitContact()">Send Message →</button>
+          </div>
+          <div class="contact-map">
+            <div class="section-tag" style="margin-bottom:1rem;">LOCATION</div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.9676886013754!2d39.53207594232789!3d-6.2679799352996755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185d3d004a19e39d%3A0xb71086afdf0aee6!2sMSHIMBA%20SONS%20SHOP!5e0!3m2!1sen!2stz!4v1775833346811!5m2!1sen!2stz"
+              width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <!-- <section class="cta-section">
+      <div class="cta-content">
+        <h2>Tazama Bidhaa Zetu Leo</h2>
+        <p>Karibu kununu bidhaa bora za ujenzi, zana, mabomba, na umeme hapa sasa!</p>
+        <button class="btn-primary btn-lg" onclick="showSection('products')">Tazama Bidhaa →</button>
+      </div>
+    </section> -->
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <div class="logo-icon">MH</div>
+              <div>
+                <div class="logo-text">MSHIMBA</div>
+                <div class="logo-sub">HARDWARE · PAJE</div>
+              </div>
+            </div>
+            <p>Your reliable source for construction materials, tools, plumbing, and electrical supplies in Paje,
+              Zanzibar.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>LINKS</h4>
+            <a onclick="showSection('home')">Home</a>
+            <a onclick="showSection('about')">About</a>
+            <a onclick="showSection('categories')">Categories</a>
+            <a onclick="showSection('products')">All Products</a>
+            <a onclick="showSection('testimonials')">Testimonials</a>
+            <a onclick="showSection('contact')">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h4>CATEGORIES</h4>
+            <a onclick="filterAndGo('Building Materials')">Building Materials</a>
+            <a onclick="filterAndGo('Hardware Tools')">Hardware Tools</a>
+            <a onclick="filterAndGo('Plumbing Fixtures')">Plumbing Fixtures</a>
+            <a onclick="filterAndGo('Electrical Supplies')">Electrical Supplies</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2025 MSHIMBA HARDWARE – Paje, Zanzibar</span>
+          <span style="color:var(--orange);">🔧 Built by <span class="dev">Khamiar Mshimba</span></span>
+        </div>
+      </div>
+    </footer>
+    
+
+  </div><!-- /public-view -->
+
+  <!-- TOAST -->
+  <div class="success-toast" id="toast"></div>
+
+  <script>
+    // ──── DATA STORE ────
+    let products = [];
+    let currentFilter = 'All';
+
+    // ──── LOAD PRODUCTS FROM DATABASE ────
+    async function loadProducts() {
+      try {
+        const response = await fetch('admin/api/products.php?action=read');
+        const data = await response.json();
+        if (data.success) {
+          products = data.products;
+          console.log('Products loaded from database:', products.length);
+        } else {
+          console.error('Failed to load products:', data.error);
+          products = [];
+        }
+      } catch (error) {
+        console.error('Error loading products:', error);
+        products = [];
+      }
+    }
+
+    // ──── NAVIGATION ────
+    function showSection(sec) {
+      ['home', 'about', 'categories', 'products', 'testimonials', 'contact'].forEach(s => {
+        const el = document.getElementById('section-' + s);
+        if (el) el.classList.toggle('hidden', s !== sec);
+      });
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      const navEl = document.getElementById('nav-' + sec);
+      if (navEl) navEl.classList.add('active');
+      if (sec === 'products' || sec === 'home') renderProducts();
+      if (sec === 'categories') updateCounts();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMobile() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // ──── PRODUCTS RENDER ────
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      const q = (document.getElementById('searchInput')?.value || '').toLowerCase();
+      let list = products.filter(p => {
+        const matchCat = currentFilter === 'All' || p.cat === currentFilter;
+        const matchQ = !q || p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
+        return matchCat && matchQ;
+      });
+      if (!list.length) {
+        grid.innerHTML = '<div class="no-products">Products Not Found.</div>';
+        return;
+      }
+      grid.innerHTML = list.map(p => `
+    <div class="product-card">
+      <div class="product-img" ">
+        ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
+        <img src="${p.image || 'assets/images/default-product.jpg'}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="product-body">
+        <div class="product-cat">${p.cat.toUpperCase()}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-footer">
+          <div class="product-price">TZS ${Number(p.price).toLocaleString()} <span>/unit</span></div>
+          ${p.stock ? '<div class="in-stock">Active</div>' : '<div class="out-stock">Inactive</div>'}
+        </div>
+      </div>
+    </div>
+  `).join('');
+      updateStatCount();
+    }
+
+    function setFilter(cat, btn) {
+      currentFilter = cat;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProducts();
+    }
+    function filterAndGo(cat) {
+      const internalMap = {
+        'Building Materials': 'Ujenzi',
+        'Hardware Tools': 'Zana',
+        'Plumbing Fixtures': 'Maji',
+        'Electrical Supplies': 'Umeme',
+        'Building': 'Ujenzi',
+        'Tools': 'Zana',
+        'Plumbing': 'Maji',
+        'Electrical': 'Umeme',
+        'All': 'All',
+        'Zote': 'All'
+      };
+      const displayMap = {
+        Ujenzi: 'Building',
+        Zana: 'Tools',
+        Maji: 'Plumbing',
+        Umeme: 'Electrical',
+        All: 'All'
+      };
+      const internalCat = internalMap[cat] || cat;
+      currentFilter = internalCat;
+      showSection('products');
+      const displayLabel = displayMap[internalCat] || cat;
+      setTimeout(() => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.toggle('active', b.textContent === displayLabel);
+        });
+        renderProducts();
+      }, 50);
+    }
+
+    function updateCounts() {
+      const categories = [
+        { cat: 'Ujenzi', id: 'cnt-ujenzi' },
+        { cat: 'Zana', id: 'cnt-zana' },
+        { cat: 'Maji', id: 'cnt-maji' },
+        { cat: 'Umeme', id: 'cnt-umeme' }
+      ];
+      categories.forEach(item => {
+        const n = products.filter(p => p.cat === item.cat).length;
+        const el = document.getElementById(item.id);
+        if (el) el.textContent = n + ' products';
+      });
+    }
+    function updateStatCount() {
+      const el = document.getElementById('stat-products');
+      if (el) el.textContent = products.length;
+    }
+
+    // ──── CONTACT ────
+    function submitContact() {
+      toast('Your message has been sent! We will contact you shortly.', 'green');
+    }
+
+    function toast(msg, type = 'green') {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.style.background = type === 'green' ? 'var(--green)' : type === 'red' ? 'var(--red)' : 'var(--orange)';
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ──── INIT ────
+    window.addEventListener('DOMContentLoaded', async () => {
+      await loadProducts();
+      renderProducts();
+      updateStatCount();
+      updateCounts();
+      // Animate stat counter
+      let count = 0;
+      const target = products.length;
+      const interval = setInterval(() => {
+        count += 1;
+        const el = document.getElementById('stat-products');
+        if (el) el.textContent = count;
+        if (count >= target) clearInterval(interval);
+      }, 60);
+    });
+
+    // ===== MODERN TESTIMONIALS AUTO-SCROLL =====
+
+    // Testimonial data
+    const testimonials = [
+      {
+        stars: 5,
+        text: "Duka bora sana! Wamenipatia bidhaa za ubora na bei nzuri. Nitarudi tena.",
+        author: "Juma Hassan",
+        role: "Mjumbe (Paje)"
+      },
+      {
+        stars: 5,
+        text: "Wamejaliwa sana! Walimsaidia kupata vile nilichohitaji haraka sana.",
+        author: "Fatima Ali",
+        role: "Mjenzi (Zanzibar)"
+      },
+      {
+        stars: 5,
+        text: "Huduma bora, bidhaa nzuri, na timu yenye ujuzi. Karibu kwa kila mjumbe.",
+        author: "Ahmed Ibrahim",
+        role: "Walimu (Paje)"
+      },
+      {
+        stars: 5,
+        text: "Ujuzi wao ni wa kipekee! Wanajua bidhaa wanazozouza na wanatusaidia kuchagua vizuri.",
+        author: "Mariam Omar",
+        role: "Mfanya Biashara (Stone Town)"
+      },
+      {
+        stars: 5,
+        text: "Bei zao ni nzuri na bidhaa ni za asili. Nimekuwa nikinunua hapa kwa miaka mingi.",
+        author: "Suleiman Makame",
+        role: "Mwenye Nyumba (Paje)"
+      },
+      {
+        stars: 5,
+        text: "Wanaheshimu wateja wao. Daima wanakupa huduma ya kwanza kabisa.",
+        author: "Aisha Bakari",
+        role: "Mameneja (Zanzibar)"
+      },
+      {
+        stars: 5,
+        text: "Ninapenda jinsi wanavyojali mazingira. Duka lao ni safi na lililo pangwa vizuri.",
+        author: "Omar Hassan",
+        role: "Mteja wa Kudumu (Paje)"
+      },
+      {
+        stars: 5,
+        text: "Wanauza bidhaa za kudumu niliyozitumia kwa miaka bila matatizo.",
+        author: "Khadija Ali",
+        role: "Mjengo (Paje)"
+      },
+      {
+        stars: 5,
+        text: "Msaada wao wa kiufundi ni bora. Wanatusaidia hata kwenye usakinishaji.",
+        author: "Ali Mwalimu",
+        role: "Fund wa Umeme (Zanzibar)"
+      }
+    ];
+
+    // Auto-scroll functionality
+    class TestimonialSlider {
+      constructor() {
+        this.testimonials = testimonials;
+        this.currentIndex = 0;
+        this.isAutoScrolling = true;
+        this.scrollInterval = null;
+        this.wrapper = document.getElementById('testimonialsWrapper');
+        this.track = document.getElementById('testimonialsTrack');
+        this.dotsContainer = document.getElementById('testimonialsDots');
+
+        // Cards per view based on screen size
+        this.getCardsPerView = () => {
+          if (window.innerWidth <= 640) return 1;
+          if (window.innerWidth <= 1024) return 2;
+          return 3;
+        };
+
+        this.init();
+      }
+
+      init() {
+        this.renderTestimonials();
+        this.renderDots();
+        this.startAutoScroll();
+        this.setupEventListeners();
+        this.updateSlider();
+      }
+
+      renderTestimonials() {
+        // Create testimonials HTML
+        const testimonialsHTML = this.testimonials.map(testimonial => `
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              ${this.renderStars(testimonial.stars)}
+            </div>
+            <p class="testimonial-text">"${testimonial.text}"</p>
+            <div class="testimonial-author">- ${testimonial.author}</div>
+            <div class="testimonial-role">${testimonial.role}</div>
+          </div>
+        `).join('');
+
+        // Duplicate testimonials for infinite scroll effect
+        this.track.innerHTML = testimonialsHTML + testimonialsHTML;
+      }
+
+      renderStars(rating) {
+        return '⭐'.repeat(rating);
+      }
+
+      renderDots() {
+        const totalSlides = Math.ceil(this.testimonials.length / this.getCardsPerView());
+        const dotsHTML = Array.from({ length: totalSlides }, (_, i) =>
+          `<div class="testimonial-dot ${i === 0 ? 'active' : ''}" data-slide="${i}"></div>`
+        ).join('');
+
+        this.dotsContainer.innerHTML = dotsHTML;
+      }
+
+      setupEventListeners() {
+        // Pause on hover
+        this.wrapper.addEventListener('mouseenter', () => this.pauseAutoScroll());
+        this.wrapper.addEventListener('mouseleave', () => this.startAutoScroll());
+
+        // Dot navigation
+        this.dotsContainer.addEventListener('click', (e) => {
+          if (e.target.classList.contains('testimonial-dot')) {
+            const slideIndex = parseInt(e.target.dataset.slide);
+            this.goToSlide(slideIndex);
+          }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+          this.renderDots();
+          this.updateSlider();
+        });
+      }
+
+      startAutoScroll() {
+        if (this.scrollInterval) return;
+
+        this.isAutoScrolling = true;
+        this.scrollInterval = setInterval(() => {
+          this.nextSlide();
+        }, 3000); // Change every 3 seconds
+      }
+
+      pauseAutoScroll() {
+        this.isAutoScrolling = false;
+        if (this.scrollInterval) {
+          clearInterval(this.scrollInterval);
+          this.scrollInterval = null;
+        }
+      }
+
+      nextSlide() {
+        const cardsPerView = this.getCardsPerView();
+        const totalSlides = Math.ceil(this.testimonials.length / cardsPerView);
+
+        this.currentIndex = (this.currentIndex + 1) % totalSlides;
+        this.updateSlider();
+      }
+
+      goToSlide(slideIndex) {
+        this.currentIndex = slideIndex;
+        this.updateSlider();
+
+        // Reset auto-scroll timer
+        this.pauseAutoScroll();
+        if (this.isAutoScrolling) {
+          this.startAutoScroll();
+        }
+      }
+
+      updateSlider() {
+        const cardsPerView = this.getCardsPerView();
+        const cardWidth = 100 / cardsPerView;
+        const offset = this.currentIndex * cardWidth;
+
+        // Use transform for smooth animation
+        this.track.style.transform = `translateX(-${offset}%)`;
+
+        // Update active dot
+        const dots = this.dotsContainer.querySelectorAll('.testimonial-dot');
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === this.currentIndex);
+        });
+      }
+    }
+
+    // Initialize testimonials when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      new TestimonialSlider();
+    });
+
+    
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSHIMBA ADMIN – Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body>
+  <div class="admin-login" id="adminLogin">
+    <div class="login-card">
+      <div style="margin-bottom:1.5rem;">
+        <div class="logo-icon" style="width:48px;height:48px;font-size:24px;margin-bottom:1rem;">MH</div>
+        <h2>ADMIN LOGIN</h2>
+        <p>Sign in to your admin account</p>
+      </div>
+      <div class="login-err" id="loginErr">Username or password is incorrect.</div>
+      <div class="form-group">
+        <label>USERNAME</label>
+        <input type="text" id="adminUser" placeholder="admin" value="">
+      </div>
+      <div class="form-group">
+        <label>PASSWORD</label>
+        <input type="password" id="adminPass" placeholder="••••••••" value=""
+          onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <button class="btn-primary" style="width:100%;margin-top:0.5rem;" onclick="doLogin()">Sign In →</button>
+      <p style="color:var(--muted);font-size:12px;margin-top:1rem;text-align:center;font-family:'DM Mono',monospace;">
+        Default: admin / mshimba2025</p>
+      <button class="btn-ghost btn-sm" style="width:100%;margin-top:0.75rem;" onclick="window.location.href='../index.html'">← Back to Website</button>
+    </div>
+  </div>
+
+  <script>
+    const ADMIN_SESSION_KEY = 'mh_admin_logged_in';
+
+    function doLogin() {
+      const u = document.getElementById('adminUser').value.trim();
+      const p = document.getElementById('adminPass').value;
+      const err = document.getElementById('loginErr');
+      
+      if (!u || !p) {
+        err.textContent = 'Please fill in both fields.';
+        err.style.display = 'block';
+        return;
+      }
+
+      fetch('api/login.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: u, password: p })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          window.location.href = 'panel.html';
+        } else {
+          err.textContent = data.error || 'Username or password is incorrect.';
+          err.style.display = 'block';
+        }
+      })
+      .catch(e => {
+        console.error(e);
+        err.textContent = 'Network error. Please try again.';
+        err.style.display = 'block';
+      });
+    }
+
+
+    window.addEventListener('DOMContentLoaded', () => {
+      fetch('api/check-session.php')
+        .then(res => res.json())
+        .then(data => {
+          if (data.logged_in) {
+            console.log('Already logged in, redirecting to panel');
+            window.location.href = 'panel.html';
+          }
+        })
+        .catch(e => console.log('Session check failed:', e));
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSHIMBA ADMIN – Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body>
+  <div class="admin-panel" id="adminPanel">
+    <div class="admin-nav">
+      <div class="admin-nav-inner">
+        <div class="admin-title">MSHIMBA <span>ADMIN</span></div>
+        <div class="admin-nav-right">
+          <span class="admin-user" id="adminUserLabel">admin</span>
+          <button class="btn-sm btn-ghost" onclick="window.location.href='../index.html'">← Website</button>
+          <button class="btn-sm btn-danger" onclick="doLogout()">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-body">
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="switchTab('dashboard',this)">📊 Dashboard</button>
+        <button class="admin-tab" onclick="switchTab('add-product',this)">➕ Add Product</button>
+        <button class="admin-tab" onclick="switchTab('manage',this)">📦 Manage Products</button>
+      </div>
+
+      <div class="admin-pane active" id="tab-dashboard">
+        <div class="dash-stats">
+          <div class="dash-card">
+            <div class="dash-card-label">TOTAL PRODUCTS</div>
+            <div class="dash-card-num orange" id="dash-total">0</div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-label">IN STOCK</div>
+            <div class="dash-card-num green" id="dash-instock">0</div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-label">OUT OF STOCK</div>
+            <div class="dash-card-num" style="color:var(--red)" id="dash-outstock">0</div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-label">CATEGORIES</div>
+            <div class="dash-card-num blue">4</div>
+          </div>
+        </div>
+        <div class="recent-table">
+          <div class="table-header">
+            <h3>RECENT PRODUCTS</h3>
+            <button class="btn-sm btn-success"
+              onclick="switchTab('add-product',document.querySelector('.admin-tab:nth-child(2)'))">+ Add</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>PRODUCT</th>
+                <th>CATEGORY</th>
+                <th>PRICE (TZS)</th>
+                <th>BADGE</th>
+                <th>STOCK (QTY)</th>
+              </tr>
+            </thead>
+            <tbody id="dashTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="admin-pane" id="tab-add-product">
+        <div class="prod-form-card">
+          <h3>ADD NEW PRODUCT</h3>
+          <div class="prod-form-grid">
+            <div class="form-group">
+              <label>PRODUCT NAME *</label>
+              <input type="text" id="pName" placeholder="e.g. Cement Dangote 50kg">
+            </div>
+            <div class="form-group">
+              <label>CATEGORY *</label>
+              <select id="pCat">
+                <option value="">-- Select --</option>
+                <option value="Ujenzi">Building Materials</option>
+                <option value="Zana">Hardware Tools</option>
+                <option value="Maji">Plumbing Fixtures</option>
+                <option value="Umeme">Electrical Supplies</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>PRICE (TZS) *</label>
+              <input type="number" id="pPrice" placeholder="e.g. 15000">
+            </div>
+            <div class="form-group">
+              <label>STOCK (QTY)</label>
+              <input type="number" id="pStock" placeholder="e.g. 10" min="0" value="1">
+            </div>
+            <div class="form-group form-full">
+              <label>PRODUCT DESCRIPTION</label>
+              <textarea id="pDesc" rows="3" placeholder="Enter short product description..."></textarea>
+            </div>
+            <div class="form-group">
+              <label>PRODUCT BADGE</label>
+              <select id="pBadge">
+                <option value="">-- No Badge --</option>
+                <option value="MAARUFU">POPULAR</option>
+                <option value="HOT">HOT</option>
+                <option value="MPYA">NEW</option>
+                <option value="OFFER">OFFER</option>
+              </select>
+            </div>
+            <div class="form-group form-full">
+              <label>PRODUCT IMAGE</label>
+              <input type="file" id="pImage" accept="image/*" onchange="previewImage(this, 'pImagePreview')">
+              <div id="pImagePreview" class="image-preview" style="margin-top: 10px; display: none;">
+                <img src="" alt="Preview" style="max-width: 200px; max-height: 200px; border-radius: 8px;">
+              </div>
+            </div>
+            <div class="form-group form-full" style="display:flex;gap:1rem;">
+              <button class="btn-primary" style="flex:1;" onclick="addProduct()">✓ Save Product</button>
+              <button class="btn-ghost btn-sm" onclick="clearForm()"
+                style="padding:10px 24px;border-radius:8px;font-size:14px;">Clear</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-pane" id="tab-manage">
+        <div class="recent-table">
+          <div class="table-header">
+            <h3>ALL PRODUCTS</h3>
+            <input class="search-input" type="text" placeholder="Search..." id="adminSearch"
+              oninput="renderAdminTable()">
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>IMAGE</th>
+                <th>NAME</th>
+                <th>CATEGORY</th>
+                <th>PRICE (TZS)</th>
+                <th>BADGE</th>
+                <th>STOCK (QTY)</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody id="adminTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="editModal">
+    <div class="modal-card">
+      <h3>EDIT PRODUCT</h3>
+      <div class="form-group"><label>NAME</label><input type="text" id="eName"></div>
+      <div class="form-row">
+        <div class="form-group"><label>CATEGORY</label>
+          <select id="eCat">
+            <option value="Ujenzi">Building Materials</option>
+            <option value="Zana">Hardware Tools</option>
+            <option value="Maji">Plumbing Fixtures</option>
+            <option value="Umeme">Electrical Supplies</option>
+          </select>
+        </div>
+        <div class="form-group"><label>PRICE (TZS)</label><input type="number" id="ePrice"></div>
+      </div>
+      <div class="form-group"><label>DESCRIPTION</label><textarea id="eDesc" rows="3"></textarea></div>
+      <div class="form-group"><label>STOCK (QTY)</label>
+        <input type="number" id="eStock" min="0">
+      </div>
+      <div class="form-group"><label>PRODUCT BADGE</label>
+        <select id="eBadge">
+          <option value="">-- No Badge --</option>
+          <option value="MAARUFU">POPULAR</option>
+          <option value="HOT">HOT</option>
+          <option value="MPYA">NEW</option>
+          <option value="OFFER">OFFER</option>
+        </select>
+      </div>
+      <div class="form-group"><label>IMAGE</label>
+        <input type="file" id="eImage" accept="image/*" onchange="previewImage(this, 'eImagePreview')">
+        <div id="eImagePreview" class="image-preview" style="margin-top: 10px;">
+          <img src="" alt="Preview" style="max-width: 200px; max-height: 200px; border-radius: 8px;">
+        </div>
+      </div>
+      <div style="display:flex;gap:1rem;margin-top:1rem;">
+        <button class="btn-primary" style="flex:1;" onclick="saveEdit()">Save</button>
+        <button class="btn-ghost btn-sm" style="padding:10px 24px;border-radius:8px;font-size:14px;"
+          onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="success-toast" id="toast"></div>
+
+  <script>
+    let products = [];
+    let selectedImageFile = null;
+    let editingId = null;
+
+    function ensureAuth() {
+      fetch('api/check-session.php')
+        .then(res => {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(data => {
+          if (!data.logged_in) {
+            console.log('Not logged in, redirecting to login');
+            window.location.href = 'login.html';
+          } else {
+            console.log('User logged in as:', data.user);
+            document.getElementById('adminUserLabel').textContent = data.user;
+            loadProducts();
+          }
+        })
+        .catch(err => {
+          console.error('Auth check failed:', err);
+          window.location.href = 'login.html';
+        });
+    }
+
+    function loadProducts() {
+      fetch('api/products.php?action=read')
+        .then(res => {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(data => {
+          if (data.success) {
+            products = data.products;
+            console.log('Loaded ' + products.length + ' products');
+            refreshDash();
+            renderAdminTable();
+          } else {
+            console.error('API Error:', data.error);
+            toast(data.error || 'Error loading products', 'red');
+          }
+        })
+        .catch(err => {
+          console.error('Products fetch error:', err);
+          toast('Error loading products: ' + err, 'red');
+        });
+    }
+
+    function doLogout() {
+      fetch('api/logout.php', { method: 'POST' })
+        .then(res => res.json())
+        .then(data => {
+          console.log('Logged out successfully');
+          window.location.href = 'login.html';
+        })
+        .catch(err => {
+          console.error('Logout error:', err);
+          window.location.href = 'login.html';
+        });
+    }
+
+    function switchTab(name, btn) {
+      document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.admin-pane').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      document.getElementById('tab-' + name).classList.add('active');
+      if (name === 'manage') renderAdminTable();
+      if (name === 'dashboard') refreshDash();
+    }
+
+    function refreshDash() {
+      document.getElementById('dash-total').textContent = products.length;
+      document.getElementById('dash-instock').textContent = products.filter(p => p.stock).length;
+      document.getElementById('dash-outstock').textContent = products.filter(p => !p.stock).length;
+      const tbody = document.getElementById('dashTable');
+      const recent = [...products].reverse().slice(0, 8);
+      tbody.innerHTML = recent.map(p => `
+        <tr>
+          <td><img src="../${p.image || 'assets/images/default-product.jpg'}" alt="${p.name}" style="width:50px;height:50px;object-fit:cover;border-radius:8px;"></td>
+          <td><span class="badge ${catBadge(p.cat)}">${p.cat}</span></td>
+          <td style="font-family:'DM Mono',monospace;">TZS ${Number(p.price).toLocaleString()}</td>
+          <td>${p.badge ? `<span class="badge badge-orange">${p.badge}</span>` : ''}</td>
+          <td>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+              <strong>${p.stock}</strong>
+              <span class="badge ${p.stock ? 'badge-green' : 'badge-red'}" style="font-size:10px;">
+                ${p.stock ? 'Available' : 'Unavailable'}
+              </span>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function catBadge(cat) {
+      return { Ujenzi: 'badge-orange', Zana: 'badge-blue', Maji: 'badge-blue', Umeme: 'badge-orange' }[cat] || 'badge-orange';
+    }
+
+    function catLabel(cat) {
+      return {
+        Ujenzi: 'Building Materials',
+        Zana: 'Hardware Tools',
+        Maji: 'Plumbing Fixtures',
+        Umeme: 'Electrical Supplies'
+      }[cat] || cat;
+    }
+
+    function previewImage(input, previewId) {
+      const preview = document.getElementById(previewId);
+      const img = preview.querySelector('img');
+      
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          img.src = e.target.result;
+          preview.style.display = 'block';
+        }
+        reader.readAsDataURL(input.files[0]);
+        selectedImageFile = input.files[0];
+      } else {
+        preview.style.display = 'none';
+        selectedImageFile = null;
+      }
+    }
+
+    function addProduct() {
+      const name = document.getElementById('pName').value.trim();
+      const cat = document.getElementById('pCat').value;
+      const price = parseInt(document.getElementById('pPrice').value);
+      const desc = document.getElementById('pDesc').value.trim();
+      const stock = parseInt(document.getElementById('pStock').value);
+      const badge = document.getElementById('pBadge').value;
+      
+      if (!name || !cat || !price || !desc) { 
+        toast('Please fill in all required fields!', 'red'); 
+        return; 
+      }
+      
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('category', cat);
+      formData.append('price', price);
+      formData.append('description', desc);
+      formData.append('stock', stock);
+      formData.append('badge', badge);
+      
+      const imageFile = document.getElementById('pImage').files[0];
+      if (imageFile) {
+        formData.append('image', imageFile);
+      }
+      
+      fetch('api/products.php?action=create', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          toast('Product "' + name + '" added!', 'green');
+          clearForm();
+          loadProducts();
+        } else {
+          toast(data.error || 'Error adding product', 'red');
+        }
+      })
+      .catch(err => toast('Error: ' + err, 'red'));
+    }
+
+    function clearForm() {
+      ['pName', 'pPrice', 'pDesc'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('pCat').value = '';
+      document.getElementById('pStock').value = '1';
+      document.getElementById('pBadge').value = '';
+      document.getElementById('pImage').value = '';
+      document.getElementById('pImagePreview').style.display = 'none';
+      selectedImageFile = null;
+    }
+
+    function renderAdminTable() {
+      const q = (document.getElementById('adminSearch')?.value || '').toLowerCase();
+      const list = products.filter(p => !q || p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q));
+      const tbody = document.getElementById('adminTable');
+      if (!list.length) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:2rem;">No products found.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = list.map(p => `
+        <tr>
+          <td><img src="../${p.image || 'assets/images/default-product.jpg'}" alt="${p.name}" style="width:50px;height:50px;object-fit:cover;border-radius:8px;"></td>
+          <td style="font-weight:500;">${p.name}</td>
+          <td><span class="badge ${catBadge(p.cat)}">${p.cat}</span></td>
+          <td style="font-family:'DM Mono',monospace;">TZS ${Number(p.price).toLocaleString()}</td>
+          <td>${p.badge ? `<span class="badge badge-orange">${p.badge}</span>` : ''}</td>
+          <td>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+              <strong>${p.stock}</strong>
+              <span class="badge ${p.stock ? 'badge-green' : 'badge-red'}" style="font-size:10px;">
+                ${p.stock ? '✓ Available' : '✕ Unavailable'}
+              </span>
+            </div>
+          </td>
+          <td style="display:flex;gap:6px;">
+            <button class="action-btn" onclick="openEdit(${p.id})">Edit</button>
+            <button class="action-btn del" onclick="deleteProduct(${p.id})">Delete</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function deleteProduct(id) {
+      if (!confirm('Are you sure you want to delete this product?')) return;
+      
+      fetch('api/products.php?action=delete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          toast('Product deleted.', 'red');
+          loadProducts();
+        } else {
+          toast(data.error || 'Error deleting product', 'red');
+        }
+      })
+      .catch(err => toast('Error: ' + err, 'red'));
+    }
+
+    function openEdit(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      editingId = id;
+      document.getElementById('eName').value = p.name;
+      document.getElementById('eCat').value = p.cat;
+      document.getElementById('ePrice').value = p.price;
+      document.getElementById('eDesc').value = p.desc;
+      document.getElementById('eStock').value = p.stock;
+      document.getElementById('eBadge').value = p.badge || '';
+      
+      const editImgPreview = document.getElementById('eImagePreview');
+      const editImg = editImgPreview.querySelector('img');
+      editImg.src = '../' + (p.image || 'assets/images/default-product.jpg');
+      editImgPreview.style.display = 'block';
+      
+      document.getElementById('editModal').classList.add('open');
+    }
+
+    function closeModal() { 
+      document.getElementById('editModal').classList.remove('open'); 
+      editingId = null; 
+    }
+
+    function saveEdit() {
+      const p = products.find(x => x.id === editingId);
+      if (!p) return;
+      
+      const formData = new FormData();
+      formData.append('id', editingId);
+      formData.append('name', document.getElementById('eName').value.trim() || p.name);
+      formData.append('category', document.getElementById('eCat').value);
+      formData.append('price', parseInt(document.getElementById('ePrice').value) || p.price);
+      formData.append('description', document.getElementById('eDesc').value.trim());
+      formData.append('stock', parseInt(document.getElementById('eStock').value));
+      formData.append('badge', document.getElementById('eBadge').value);
+      
+      const imageFile = document.getElementById('eImage').files[0];
+      if (imageFile) {
+        formData.append('image', imageFile);
+      }
+      
+      fetch('api/products.php?action=update', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          toast('Product saved!', 'green');
+          closeModal();
+          loadProducts();
+        } else {
+          toast(data.error || 'Error updating product', 'red');
+        }
+      })
+      .catch(err => toast('Error: ' + err, 'red'));
+    }
+
+    function toast(msg, type = 'green') {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.style.background = type === 'green' ? 'var(--green)' : type === 'red' ? 'var(--red)' : 'var(--orange)';
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      ensureAuth();
+      document.getElementById('editModal').addEventListener('click', function (e) {
+        if (e.target === this) closeModal();
+      });
+    });
+  </script>
+</body>
+
+</html>
