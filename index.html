@@ -21,7 +21,7 @@
     <!-- NAV -->
     <nav>
       <div class="nav-inner">
-        <div class="logo" onclick="showSection('home')">
+        <div class="logo">
           <div class="logo-icon">MH</div>
           <div>
             <div class="logo-text">MSHIMBA</div>
@@ -31,7 +31,8 @@
         <div class="nav-links">
           <a href="#section-home" class="active" id="nav-home">Home</a>
           <a href="#section-about" id="nav-about">About</a>
-          <a href="#section-categories" id="nav-categories">Products</a>
+          <a href="#section-categories" id="nav-categories">Categories</a>
+          <a href="#section-featured-products" id="nav-featured-products">Featured</a>
           <a href="#section-products" id="nav-products">Shop</a>
           <a href="#section-contact" id="nav-contact">Contact</a>
         </div>
@@ -47,8 +48,9 @@
       <button class="close-menu" onclick="toggleMobile()">✕</button>
       <a href="#section-home" onclick="toggleMobile()">HOME</a>
       <a href="#section-about" onclick="toggleMobile()">ABOUT</a>
-      <a href="#section-categories" onclick="toggleMobile()">PRODUCTS</a>
-      <a href="#section-products" onclick="toggleMobile()">SHOP</a>
+      <a href="#section-categories" onclick="toggleMobile()">CATEGORIES</a>
+      <a href="#section-featured-products" onclick="toggleMobile()">FEATURED</a>
+      <!-- <a href="#section-products" onclick="toggleMobile()">SHOP</a> -->
       <a href="#section-contact" onclick="toggleMobile()">CONTACT</a>
       <a href="./admin/login.html" onclick="toggleMobile()">ADMIN</a>
     </div>
@@ -66,12 +68,12 @@
           project.
         </p>
         <div class="hero-actions">
-          <button class="btn-primary" href="#section-products">Explore Products</button>
-          <button class="btn-outline" href="#section_contact">Contact Us</button>
+          <a class="btn-primary" href="./pages/products.html">Explore Products</a>
+          <a class="btn-outline" href="#section-contact">Contact Us</a>
         </div>
         <div class="hero-stats">
           <div class="stat-item">
-            <div class="stat-num" id="stat-products">0</div>
+            <div class="stat-num" id="stat-products">500+</div>
             <div class="stat-label">PRODUCTS</div>
           </div>
           <div class="stat-item">
@@ -161,6 +163,10 @@
                   available at all times for your convenience.</div>
               </div>
             </div>
+
+              <div class="stat-item">
+                <a class="btn-primary" id="btn-about" href="./pages/about.html">More About</a>
+              </div>
           </div>
         </div>
       </div>
@@ -239,21 +245,30 @@
         </div>
       </div>
     </section>
-    <!-- PRODUCTS -->
-    <section id="section-products" style="background:var(--dark2);">
+
+    <!-- FEATURED PRODUCTS -->
+    <section id="section-featured-products" style="background:var(--dark2);">
       <div class="container">
-        <div class="section-tag">OUR STORE</div>
-        <h2 class="section-title">ALL PRODUCTS</h2>
+        <div class="section-tag">FEATURED PRODUCTS</div>
+        <h2 class="section-title">POPULAR PRODUCTS</h2>
+        <p class="section-sub">Check out our most popular construction materials and tools</p>
         <div class="filter-bar">
-          <button class="filter-btn active" onclick="setFilter('All',this)">All</button>
-          <button class="filter-btn" onclick="setFilter('Ujenzi',this)">Building</button>
-          <button class="filter-btn" onclick="setFilter('Zana',this)">Tools</button>
-          <button class="filter-btn" onclick="setFilter('Maji',this)">Plumbing</button>
-          <button class="filter-btn" onclick="setFilter('Umeme',this)">Electrical</button>
-          <input class="search-input" type="text" placeholder="Find products..." id="searchInput"
-            oninput="renderProducts()">
+          <button class="filter-btn active" onclick="setFeaturedFilter('All',this)">All</button>
+          <button class="filter-btn" onclick="setFeaturedFilter('Ujenzi',this)">Building</button>
+          <button class="filter-btn" onclick="setFeaturedFilter('Zana',this)">Tools</button>
+          <button class="filter-btn" onclick="setFeaturedFilter('Maji',this)">Plumbing</button>
+          <button class="filter-btn" onclick="setFeaturedFilter('Umeme',this)">Electrical</button>
         </div>
-        <div class="products-grid" id="productsGrid"></div>
+
+        <div class="featured-products-grid">
+          <!-- Products will be dynamically generated here -->
+        </div>
+
+        <div class="featured-products-actions">
+          <button class="btn-primary btn-lg" onclick="window.location.href='./pages/products.html'">
+            View All Products <span style="margin-left: 0.5rem;">&rarr;</span>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -351,15 +366,6 @@
       </div>
     </section>
 
-    <!-- CTA BANNER -->
-    <!-- <section class="cta-section">
-      <div class="cta-content">
-        <h2>Tazama Bidhaa Zetu Leo</h2>
-        <p>Karibu kununu bidhaa bora za ujenzi, zana, mabomba, na umeme hapa sasa!</p>
-        <button class="btn-primary btn-lg" onclick="showSection('products')">Tazama Bidhaa →</button>
-      </div>
-    </section> -->
-
     <!-- FOOTER -->
     <footer>
       <div class="footer-inner">
@@ -378,12 +384,12 @@
           </div>
           <div class="footer-col">
             <h4>LINKS</h4>
-            <a href="#section_home">Home</a>
-            <a href="#section_about">About</a>
-            <a href="#section_categories">Categories</a>
-            <a href="#section_products">All Products</a>
-            <a href="#section_testimonials">Testimonials</a>
-            <a href="#section_contact">Contact</a>
+            <a href="#section-home">Home</a>
+            <a href="#section-about">About</a>
+            <a href="#section-categories">Categories</a>
+            <a href="#section-featured-products">All Products</a>
+            <a href="#section-testimonials">Testimonials</a>
+            <a href="#section-contact">Contact</a>
           </div>
           <div class="footer-col">
             <h4>CATEGORIES</h4>
@@ -394,44 +400,45 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <span>© 2025 MSHIMBA HARDWARE – Paje, Zanzibar</span>
+          <span>© 2026 MSHIMBA HARDWARE – Paje, Zanzibar</span>
           <span style="color:var(--orange);">🔧 Built by <span class="dev">Khamiar Mshimba</span></span>
         </div>
       </div>
     </footer>
-    
+
 
   </div><!-- /public-view -->
 
   <!-- TOAST -->
   <div class="success-toast" id="toast"></div>
 
+  <script src="featured-products.js"></script>
   <script>
-    // ──── DATA STORE ────
-    let products = [];
+    // DATA STORE
+    // let products = [];
     let currentFilter = 'All';
 
-    // ──── LOAD PRODUCTS FROM DATABASE ────
-    async function loadProducts() {
-      try {
-        const response = await fetch('admin/api/products.php?action=read');
-        const data = await response.json();
-        if (data.success) {
-          products = data.products;
-          console.log('Products loaded from database:', products.length);
-        } else {
-          console.error('Failed to load products:', data.error);
-          products = [];
-        }
-      } catch (error) {
-        console.error('Error loading products:', error);
-        products = [];
-      }
-    }
+    // // LOAD PRODUCTS FROM DATABASE
+    // async function loadProducts() {
+    //   try {
+    //     const response = await fetch('admin/api/products.php?action=read');
+    //     const data = await response.json();
+    //     if (data.success) {
+    //       products = data.products;
+    //       console.log('Products loaded from database:', products.length);
+    //     } else {
+    //       console.error('Failed to load products:', data.error);
+    //       products = [];
+    //     }
+    //   } catch (error) {
+    //     console.error('Error loading products:', error);
+    //     products = [];
+    //   }
+    // }
 
-    // ──── NAVIGATION ────
+    // NAVIGATION
     function showSection(sec) {
-      ['home', 'about', 'categories', 'products', 'testimonials', 'contact'].forEach(s => {
+      ['home', 'about', 'categories', 'featured-products', 'products', 'testimonials', 'contact'].forEach(s => {
         const el = document.getElementById('section-' + s);
         if (el) el.classList.toggle('hidden', s !== sec);
       });
@@ -445,39 +452,6 @@
 
     function toggleMobile() {
       document.getElementById('mobileMenu').classList.toggle('open');
-    }
-
-    // ──── PRODUCTS RENDER ────
-    function renderProducts() {
-      const grid = document.getElementById('productsGrid');
-      const q = (document.getElementById('searchInput')?.value || '').toLowerCase();
-      let list = products.filter(p => {
-        const matchCat = currentFilter === 'All' || p.cat === currentFilter;
-        const matchQ = !q || p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
-        return matchCat && matchQ;
-      });
-      if (!list.length) {
-        grid.innerHTML = '<div class="no-products">Products Not Found.</div>';
-        return;
-      }
-      grid.innerHTML = list.map(p => `
-    <div class="product-card">
-      <div class="product-img" ">
-        ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
-        <img src="${p.image || 'assets/images/default-product.jpg'}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div class="product-body">
-        <div class="product-cat">${p.cat.toUpperCase()}</div>
-        <div class="product-name">${p.name}</div>
-        <div class="product-desc">${p.desc}</div>
-        <div class="product-footer">
-          <div class="product-price">TZS ${Number(p.price).toLocaleString()} <span>/unit</span></div>
-          ${p.stock ? '<div class="in-stock">Active</div>' : '<div class="out-stock">Inactive</div>'}
-        </div>
-      </div>
-    </div>
-  `).join('');
-      updateStatCount();
     }
 
     function setFilter(cat, btn) {
@@ -536,7 +510,7 @@
       if (el) el.textContent = products.length;
     }
 
-    // ──── CONTACT ────
+    // CONTACT
     function submitContact() {
       toast('Your message has been sent! We will contact you shortly.', 'green');
     }
@@ -549,7 +523,7 @@
       setTimeout(() => t.classList.remove('show'), 3000);
     }
 
-    // ──── INIT ────
+    // INIT
     window.addEventListener('DOMContentLoaded', async () => {
       await loadProducts();
       renderProducts();
@@ -762,7 +736,64 @@
       new TestimonialSlider();
     });
 
-    
+    // ===== SMOOTH SCROLL TO SECTIONS AND UPDATE ACTIVE NAV =====
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu a:not([href*="admin"])');
+
+    function handleNavClick(e) {
+      e.preventDefault();
+
+      const targetId = this.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        // Smooth scroll to section
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Update active nav link
+        navLinks.forEach(link => link.classList.remove('active'));
+        this.classList.add('active');
+
+        // Close mobile menu
+        document.getElementById('mobileMenu').classList.remove('open');
+      }
+    }
+
+    // Add click handlers to nav links
+    navLinks.forEach(link => {
+      link.addEventListener('click', handleNavClick);
+    });
+
+    // Handle mobile menu section links
+    mobileMenuLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.getElementById('mobileMenu').classList.remove('open');
+
+          // Update active nav link
+          navLinks.forEach(navLink => navLink.classList.remove('active'));
+          const correspondingNavLink = document.querySelector(`.nav-links a[href="#${targetId}"]`);
+          if (correspondingNavLink) correspondingNavLink.classList.add('active');
+        }
+      });
+    });
+
+    // ===== PARALLAX SCROLL EFFECT FOR HERO BACKGROUND =====
+    const heroBg = document.querySelector('.hero-bg');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      // Calculate parallax offset: moves slower than scroll speed (50% speed)
+      const offset = scrollY * 0.5;
+      heroBg.style.transform = `translateY(${offset}px)`;
+    });
+
+
 
   </script>
 </body>

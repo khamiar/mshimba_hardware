@@ -1,12 +1,240 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSHIMBA HARDWARE - All Products | Paje, Zanzibar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
 </head>
+
 <body>
-    
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo" onclick="window.location.href='../index.html'">
+          <div class="logo-icon">MH</div>
+          <div>
+            <div class="logo-text">MSHIMBA</div>
+            <div class="logo-sub">HARDWARE · PAJE</div>
+          </div>
+        </div>
+      <div class="nav-links">
+        <a href="../index.html#section-home">Home</a>
+        <a href="../index.html#section-about">About</a>
+        <a href="../index.html#section-categories">Categories</a>
+        <a href="#" class="active">All Products</a>
+        <a href="../index.html#section-testimonials">Testimonials</a>
+        <a href="../index.html#section-contact">Contact</a>
+      </div>
+      <div style="display:flex;gap:0.75rem;align-items:center;">
+        <a class="nav-cta" href="../admin/login.html">Admin</a>
+        <div class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" onclick="toggleMobile()">×</button>
+    <a href="../index.html#section-home" onclick="toggleMobile()">HOME</a>
+    <a href="../index.html#section-about" onclick="toggleMobile()">ABOUT</a>
+    <a href="../index.html#section-categories" onclick="toggleMobile()">CATEGORIES</a>
+    <a href="#" onclick="toggleMobile()">ALL PRODUCTS</a>
+    <a href="../index.html#section-testimonials" onclick="toggleMobile()">TESTIMONIALS</a>
+    <a href="../index.html#section-contact" onclick="toggleMobile()">CONTACT</a>
+    <a href="../admin/login.html" onclick="toggleMobile()">ADMIN</a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero" style="background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%); min-height: 40vh;">
+    <div class="hero-content" style="text-align: center; padding: 4rem 0;">
+      <div class="section-tag">OUR STORE</div>
+      <h1 style="font-size: 3rem; margin-bottom: 1rem;">ALL PRODUCTS</h1>
+      <p class="hero-desc">Browse our complete collection of construction materials, tools, plumbing supplies, and electrical equipment.</p>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="section-products" style="background:var(--dark2);">
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="setFilter('All',this)">All</button>
+        <button class="filter-btn" onclick="setFilter('Ujenzi',this)">Building</button>
+        <button class="filter-btn" onclick="setFilter('Zana',this)">Tools</button>
+        <button class="filter-btn" onclick="setFilter('Maji',this)">Plumbing</button>
+        <button class="filter-btn" onclick="setFilter('Umeme',this)">Electrical</button>
+        <input class="search-input" type="text" placeholder="Find products..." id="searchInput"
+          oninput="renderProducts()">
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon">MH</div>
+            <div>
+              <div class="logo-text">MSHIMBA</div>
+              <div class="logo-sub">HARDWARE · PAJE</div>
+            </div>
+          </div>
+          <p>Your reliable source for construction materials, tools, plumbing, and electrical supplies in Paje,
+            Zanzibar.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>LINKS</h4>
+          <a href="../index.html#section-home">Home</a>
+          <a href="../index.html#section-about">About</a>
+          <a href="../index.html#section-categories">Categories</a>
+          <a href="#">All Products</a>
+          <a href="../index.html#section-testimonials">Testimonials</a>
+          <a href="../index.html#section-contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>CATEGORIES</h4>
+          <a onclick="filterAndGo('Building Materials')">Building Materials</a>
+          <a onclick="filterAndGo('Hardware Tools')">Hardware Tools</a>
+          <a onclick="filterAndGo('Plumbing Fixtures')">Plumbing Fixtures</a>
+          <a onclick="filterAndGo('Electrical Supplies')">Electrical Supplies</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 MSHIMBA HARDWARE - Paje, Zanzibar</span>
+        <span style="color:var(--orange);">Built by <span class="dev">Khamiar Mshimba</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOAST -->
+  <div class="success-toast" id="toast"></div>
+
+  <script>
+    // DATA STORE
+    let products = [];
+    let currentFilter = 'All';
+
+    // LOAD PRODUCTS FROM DATABASE
+    async function loadProducts() {
+      try {
+        const response = await fetch('../admin/api/products.php?action=read');
+        const data = await response.json();
+        if (data.success) {
+          products = data.products;
+          console.log('Products loaded from database:', products.length);
+        } else {
+          console.error('Failed to load products:', data.error);
+          products = [];
+        }
+      } catch (error) {
+        console.error('Error loading products:', error);
+        products = [];
+      }
+    }
+
+    // MOBILE MENU TOGGLE
+    function toggleMobile() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // PRODUCTS RENDER
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      const q = (document.getElementById('searchInput')?.value || '').toLowerCase();
+      let list = products.filter(p => {
+        const matchCat = currentFilter === 'All' || p.cat === currentFilter;
+        const matchQ = !q || p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
+        return matchCat && matchQ;
+      });
+      if (!list.length) {
+        grid.innerHTML = '<div class="no-products">Products Not Found.</div>';
+        return;
+      }
+      grid.innerHTML = list.map(p => `
+    <div class="product-card">
+      <div class="product-img">
+        ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
+        <img src="${p.image || '../assets/images/default-product.jpg'}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="product-body">
+        <div class="product-cat">${p.cat.toUpperCase()}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-footer">
+          <div class="product-price">TZS ${Number(p.price).toLocaleString()} <span>/unit</span></div>
+          ${p.stock ? '<div class="in-stock">Active</div>' : '<div class="out-stock">Inactive</div>'}
+        </div>
+      </div>
+    </div>
+  `).join('');
+    }
+
+    function setFilter(cat, btn) {
+      currentFilter = cat;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProducts();
+    }
+
+    function filterAndGo(cat) {
+      const internalMap = {
+        'Building Materials': 'Ujenzi',
+        'Hardware Tools': 'Zana',
+        'Plumbing Fixtures': 'Maji',
+        'Electrical Supplies': 'Umeme',
+        'Building': 'Ujenzi',
+        'Tools': 'Zana',
+        'Plumbing': 'Maji',
+        'Electrical': 'Umeme',
+        'All': 'All',
+        'Zote': 'All'
+      };
+      const displayMap = {
+        Ujenzi: 'Building',
+        Zana: 'Tools',
+        Maji: 'Plumbing',
+        Umeme: 'Electrical',
+        All: 'All'
+      };
+      const internalCat = internalMap[cat] || cat;
+      currentFilter = internalCat;
+      const displayLabel = displayMap[internalCat] || cat;
+      setTimeout(() => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.toggle('active', b.textContent === displayLabel);
+        });
+        renderProducts();
+      }, 50);
+    }
+
+    // TOAST FUNCTION
+    function toast(msg, type = 'green') {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.style.background = type === 'green' ? 'var(--green)' : type === 'red' ? 'var(--red)' : 'var(--orange)';
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // INIT
+    window.addEventListener('DOMContentLoaded', async () => {
+      await loadProducts();
+      renderProducts();
+      console.log('Products page initialized');
+    });
+
+  </script>
 </body>
+
 </html>
