@@ -92,7 +92,7 @@ function renderFeaturedProducts() {
   }
   
   grid.innerHTML = list.map(p => `
-    <div class="product-card">
+    <div class="product-card scroll-reveal">
       <div class="product-img">
         ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
         <img src="${p.image}" alt="${p.name}">
@@ -108,6 +108,9 @@ function renderFeaturedProducts() {
       </div>
     </div>
   `).join('');
+  if (typeof initScrollRevealAnimations === 'function') {
+    initScrollRevealAnimations();
+  }
 }
 
 // SET FILTER FOR FEATURED PRODUCTS

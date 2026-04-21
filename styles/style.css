@@ -171,8 +171,7 @@ nav {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #0F0E0D 0%, #1A1917 50%, #0F0E0D 100%);
-    background-image: url('../assets/back2.jpeg');
+    background: linear-gradient(to top right, rgba(15, 14, 13, 0.75) 0%, rgba(15, 14, 13, 0.5) 35%, rgba(15, 14, 13, 0.2) 100%), url('../assets/back2.jpeg');
     background-size: cover;
     background-position: center;
     will-change: transform;
@@ -423,6 +422,17 @@ section {
 
 .cat-card:hover::before {
     opacity: 1;
+}
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .cat-icon {

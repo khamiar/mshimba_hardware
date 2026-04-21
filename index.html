@@ -63,7 +63,7 @@
       <div class="hero-content">
         <div class="hero-badge">📍 PAJE, ZANZIBAR · OPEN 7 DAYS</div>
         <h1>MSHIMBA<br><span>HARD</span>WARE</h1>
-        <p class="hero-desc">-> Your trusted destination for construction materials and professional tools in Paje,
+        <p class="hero-desc">Your trusted destination for construction materials and professional tools in Paje,
           Zanzibar. We supply quality building materials, tools, plumbing solutions, and electrical supplies for every
           project.
         </p>
@@ -73,15 +73,15 @@
         </div>
         <div class="hero-stats">
           <div class="stat-item">
-            <div class="stat-num" id="stat-products">500+</div>
+            <div class="stat-num" id="stat-products" data-target="500">0+</div>
             <div class="stat-label">PRODUCTS</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">4+</div>
+            <div class="stat-num" data-target="4">0+</div>
             <div class="stat-label">CATEGORY</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">7</div>
+            <div class="stat-num" data-target="7">0</div>
             <div class="stat-label">DAYS A WEEK</div>
           </div>
         </div>
@@ -98,20 +98,20 @@
           <div class="about-text">
             <h2 class="section-title">MSHIMBA <span style="color: var(--orange);">HARDWARE</span></h2>
             <p class="section-sub" style="margin-bottom: 2rem;">
-              -> We provide reliable construction solutions in Paje, Zanzibar. With years of experience, we ensure every
+              We provide reliable construction solutions in Paje, Zanzibar. With years of experience, we ensure every
               contractor, builder, and homeowner gets premium products at competitive prices.
             </p>
 
-            <div class="about-block">
+            <div class="about-block scroll-reveal">
               <h3>📖 Our Story</h3>
-              <p>-> Since our establishment, Mshimba Hardware has proudly served the Paje community. We are honored to
+              <p>Since our establishment, Mshimba Hardware has proudly served the Paje community. We are honored to
                 contribute to Zanzibar’s growth by supplying durable and dependable materials.
               </p>
             </div>
 
-            <div class="about-block">
+            <div class="about-block scroll-reveal">
               <h3>🎯 Mission & Vision</h3>
-              <p>-> Our goal is to be the leading hardware store in Zanzibar, providing high-quality tools and materials
+              <p>Our goal is to be the leading hardware store in Zanzibar, providing high-quality tools and materials
                 for construction, plumbing, and electrical work.</p>
             </div>
 
@@ -128,7 +128,7 @@
           </div>
 
           <div class="about-features">
-            <div class="feature-card">
+            <div class="feature-card scroll-reveal">
               <div class="feature-icon">✓</div>
               <div class="feature-text">
                 <div class="feature-title">International Products</div>
@@ -137,7 +137,7 @@
               </div>
             </div>
 
-            <div class="feature-card">
+            <div class="feature-card scroll-reveal">
               <div class="feature-icon">✓</div>
               <div class="feature-text">
                 <div class="feature-title">Competitive Pricing</div>
@@ -146,7 +146,7 @@
               </div>
             </div>
 
-            <div class="feature-card">
+            <div class="feature-card scroll-reveal">
               <div class="feature-icon">✓</div>
               <div class="feature-text">
                 <div class="feature-title">Expert Advice</div>
@@ -155,7 +155,7 @@
               </div>
             </div>
 
-            <div class="feature-card">
+            <div class="feature-card scroll-reveal">
               <div class="feature-icon">✓</div>
               <div class="feature-text">
                 <div class="feature-title">Quick Availability</div>
@@ -181,7 +181,7 @@
 
         <div class="categories-grid">
 
-          <div class="cat-card" onclick="filterAndGo('Ujenzi')">
+          <div class="cat-card scroll-reveal" onclick="filterAndGo('Ujenzi')">
             <div class="cat-count" id="cnt-ujenzi">0 products</div>
             <div class="cat-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -197,7 +197,7 @@
               a solid foundation.</div>
           </div>
 
-          <div class="cat-card" onclick="filterAndGo('Zana')">
+          <div class="cat-card scroll-reveal" onclick="filterAndGo('Zana')">
             <div class="cat-count" id="cnt-zana">0 products</div>
             <div class="cat-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -213,7 +213,7 @@
             <div class="cat-desc">Hand tools and power tools from leading brands for professional use.</div>
           </div>
 
-          <div class="cat-card" onclick="filterAndGo('Maji')">
+          <div class="cat-card scroll-reveal" onclick="filterAndGo('Maji')">
             <div class="cat-count" id="cnt-maji">0 products</div>
             <div class="cat-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -226,7 +226,7 @@
             </div>
           </div>
 
-          <div class="cat-card" onclick="filterAndGo('Umeme')">
+          <div class="cat-card scroll-reveal" onclick="filterAndGo('Umeme')">
             <div class="cat-count" id="cnt-umeme">0 products</div>
             <div class="cat-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -523,21 +523,67 @@
       setTimeout(() => t.classList.remove('show'), 3000);
     }
 
+    function animateLandingCounters() {
+      const counters = document.querySelectorAll('.hero-stats .stat-num');
+      counters.forEach(el => {
+        if (el.dataset.animated) return;
+        const targetValue = parseInt((el.dataset.target || el.textContent).replace(/[^0-9]/g, ''), 10);
+        if (!Number.isFinite(targetValue) || targetValue <= 0) return;
+        const suffix = (el.textContent.trim().replace(/[0-9]/g, '') || '').trim();
+        const duration = 1200;
+        const startTime = performance.now();
+
+        const tick = now => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const current = Math.floor(progress * targetValue);
+          el.textContent = `${current}${suffix}`;
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            el.textContent = `${targetValue}${suffix}`;
+            el.dataset.animated = 'true';
+          }
+        };
+
+        requestAnimationFrame(tick);
+      });
+    }
+
+    function initScrollRevealAnimations() {
+      const revealElements = document.querySelectorAll('.scroll-reveal');
+      if (!revealElements.length) return;
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        });
+      }, {
+        root: null,
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+      });
+
+      revealElements.forEach(el => observer.observe(el));
+    }
+
     // INIT
     window.addEventListener('DOMContentLoaded', async () => {
-      await loadProducts();
-      renderProducts();
-      updateStatCount();
-      updateCounts();
-      // Animate stat counter
-      let count = 0;
-      const target = products.length;
-      const interval = setInterval(() => {
-        count += 1;
-        const el = document.getElementById('stat-products');
-        if (el) el.textContent = count;
-        if (count >= target) clearInterval(interval);
-      }, 60);
+      animateLandingCounters();
+      initScrollRevealAnimations();
+      if (typeof loadProducts === 'function') {
+        await loadProducts();
+      }
+      if (typeof renderProducts === 'function') {
+        renderProducts();
+      }
+      if (typeof updateStatCount === 'function') {
+        updateStatCount();
+      }
+      if (typeof updateCounts === 'function') {
+        updateCounts();
+      }
     });
 
     // ===== MODERN TESTIMONIALS AUTO-SCROLL =====

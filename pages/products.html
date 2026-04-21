@@ -162,7 +162,7 @@
         return;
       }
       grid.innerHTML = list.map(p => `
-    <div class="product-card">
+    <div class="product-card scroll-reveal">
       <div class="product-img">
         ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
         <img src="${p.image || '../assets/images/default-product.jpg'}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">
@@ -178,6 +178,9 @@
       </div>
     </div>
   `).join('');
+      if (typeof initScrollRevealAnimations === 'function') {
+        initScrollRevealAnimations();
+      }
     }
 
     function setFilter(cat, btn) {
@@ -227,10 +230,30 @@
       setTimeout(() => t.classList.remove('show'), 3000);
     }
 
+    function initScrollRevealAnimations() {
+      const revealElements = document.querySelectorAll('.scroll-reveal');
+      if (!revealElements.length) return;
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        });
+      }, {
+        root: null,
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+      });
+
+      revealElements.forEach(el => observer.observe(el));
+    }
+
     // INIT
     window.addEventListener('DOMContentLoaded', async () => {
       await loadProducts();
       renderProducts();
+      initScrollRevealAnimations();
       console.log('Products page initialized');
     });
 
