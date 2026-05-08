@@ -102,7 +102,6 @@ function renderFeaturedProducts() {
         <div class="product-name">${p.name}</div>
         <div class="product-desc">${p.desc}</div>
         <div class="product-footer">
-          <div class="product-price">TZS ${Number(p.price).toLocaleString()} <span>/unit</span></div>
           ${p.stock ? '<div class="in-stock">In Stock</div>' : '<div class="out-stock">Out of Stock</div>'}
         </div>
       </div>

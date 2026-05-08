@@ -61,7 +61,7 @@ function validateProductData($data, $isUpdate = false) {
 // Function to handle image upload
 function handleImageUpload($fileInputName = 'image') {
     if (!isset($_FILES[$fileInputName]) || $_FILES[$fileInputName]['error'] === UPLOAD_ERR_NO_FILE) {
-        return 'assets/images/default-product.jpg';
+        return 'assets/default-product.jpg';
     }
     
     $file = $_FILES[$fileInputName];
@@ -89,14 +89,14 @@ function handleImageUpload($fileInputName = 'image') {
     // Generate unique filename
     $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
     $filename = 'product_' . time() . '_' . uniqid() . '.' . $extension;
-    $uploadPath = '../../assets/images/' . $filename;
+    $uploadPath = '../../assets/' . $filename;
     
     // Move uploaded file
     if (!move_uploaded_file($file['tmp_name'], $uploadPath)) {
         throw new Exception('Imeshindwa kupakua picha. Tafadhali jaribu tena.');
     }
     
-    return 'assets/images/' . $filename;
+    return 'assets/' . $filename;
 }
 
 try {
@@ -194,7 +194,7 @@ try {
             $imagePath = $existingProduct['image'];
             if (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
                 // Delete old image if it's not the default
-                if ($existingProduct['image'] !== 'assets/images/default-product.jpg' && file_exists('../../' . $existingProduct['image'])) {
+                if ($existingProduct['image'] !== 'assets/default-product.jpg' && file_exists('../../' . $existingProduct['image'])) {
                     unlink('../../' . $existingProduct['image']);
                 }
                 $imagePath = handleImageUpload();
@@ -251,7 +251,7 @@ try {
             $stmt->execute([':id' => $data['id']]);
             
             // Delete image file if it's not the default
-            if ($product['image'] !== 'assets/images/default-product.jpg' && file_exists('../../' . $product['image'])) {
+            if ($product['image'] !== 'assets/default-product.jpg' && file_exists('../../' . $product['image'])) {
                 unlink('../../' . $product['image']);
             }
             

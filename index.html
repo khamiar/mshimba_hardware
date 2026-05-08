@@ -32,11 +32,11 @@
           <a href="#section-home" class="active" id="nav-home">Home</a>
           <a href="#section-about" id="nav-about">About</a>
           <a href="#section-categories" id="nav-categories">Categories</a>
-          <a href="#section-featured-products" id="nav-featured-products">Featured</a>
-          <a href="#section-products" id="nav-products">Shop</a>
+          <a href="#section-featured-products" id="nav-featured-products">Products</a>
           <a href="#section-contact" id="nav-contact">Contact</a>
         </div>
         <div style="display:flex;gap:0.75rem;align-items:center;">
+          <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()">🌙</button>
           <a class="nav-cta" href="admin/login.html">Admin</a>
           <div class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></div>
         </div>
@@ -49,9 +49,10 @@
       <a href="#section-home" onclick="toggleMobile()">HOME</a>
       <a href="#section-about" onclick="toggleMobile()">ABOUT</a>
       <a href="#section-categories" onclick="toggleMobile()">CATEGORIES</a>
-      <a href="#section-featured-products" onclick="toggleMobile()">FEATURED</a>
+      <a href="#section-featured-products" onclick="toggleMobile()">Products</a>
       <!-- <a href="#section-products" onclick="toggleMobile()">SHOP</a> -->
       <a href="#section-contact" onclick="toggleMobile()">CONTACT</a>
+      <button class="theme-toggle-mobile" onclick="toggleTheme(); toggleMobile()">🌙</button>
       <a href="./admin/login.html" onclick="toggleMobile()">ADMIN</a>
     </div>
 
@@ -583,6 +584,30 @@
       }
       if (typeof updateCounts === 'function') {
         updateCounts();
+      }
+    });
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const toggleBtn = document.getElementById('theme-toggle');
+      const mobileToggleBtn = document.querySelector('.theme-toggle-mobile');
+      const isLight = html.classList.toggle('light-mode');
+      const icon = isLight ? '☀️' : '🌙';
+      if (toggleBtn) toggleBtn.textContent = icon;
+      if (mobileToggleBtn) mobileToggleBtn.textContent = icon;
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+
+    // Load saved theme on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-mode');
+        const icon = '☀️';
+        const toggleBtn = document.getElementById('theme-toggle');
+        const mobileToggleBtn = document.querySelector('.theme-toggle-mobile');
+        if (toggleBtn) toggleBtn.textContent = icon;
+        if (mobileToggleBtn) mobileToggleBtn.textContent = icon;
       }
     });
 

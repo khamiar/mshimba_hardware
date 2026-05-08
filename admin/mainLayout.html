@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MSHIMBA ADMIN - Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body>
+  <div class="admin-admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-admin-sidebar" id="adminSidebar">
+      <div class="admin-admin-header">
+        <a href="panel.html" class="admin-admin-logo">
+          <div class="admin-admin-logo-icon">MH</div>
+          <div class="admin-admin-logo-text">
+            <div class="admin-admin-logo-title">MSHIMBA</div>
+            <div class="admin-admin-logo-sub">ADMIN</div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="admin-admin-nav-menu">
+        <a href="panel.html" class="admin-admin-nav-item" id="nav-dashboard">
+          <span class="admin-admin-nav-item-icon">📊</span>
+          Dashboard
+        </a>
+        <a href="productManage.html" class="admin-admin-nav-item" id="nav-products">
+          <span class="admin-admin-nav-item-icon">📦</span>
+          Product Management
+        </a>
+        <a href="#" class="admin-admin-nav-item" id="nav-orders">
+          <span class="admin-admin-nav-item-icon">🛒</span>
+          Orders
+        </a>
+        <a href="#" class="admin-admin-nav-item" id="nav-customers">
+          <span class="admin-admin-nav-item-icon">👥</span>
+          Customers
+        </a>
+        <a href="#" class="admin-admin-nav-item" id="nav-settings">
+          <span class="admin-admin-nav-item-icon">⚙️</span>
+          Settings
+        </a>
+      </nav>
+
+      <div style="padding: 1rem; border-top: 1px solid var(--border);">
+        <a href="../index.html" class="admin-admin-nav-item" style="color: var(--muted);">
+          <span class="admin-admin-nav-item-icon">🌐</span>
+          Visit Website
+        </a>
+        <a href="login.html" class="admin-admin-nav-item" style="color: var(--red);">
+          <span class="admin-admin-nav-item-icon">🚪</span>
+          Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-admin-main">
+      <!-- Top Bar -->
+      <header class="admin-admin-topbar">
+        <div class="admin-admin-topbar-left">
+          <button class="admin-admin-mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+          <div class="admin-admin-breadcrumb">
+            <span id="breadcrumbTitle">Dashboard</span>
+          </div>
+        </div>
+        <div class="admin-admin-topbar-right">
+          <div class="admin-admin-user-info">
+            <span>👤</span>
+            <span id="adminUserLabel">Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="admin-admin-content" id="pageContent">
+        <!-- Content will be loaded here -->
+      </div>
+    </main>
+
+    <!-- Mobile Overlay -->
+    <div class="admin-admin-overlay" id="adminOverlay" onclick="toggleSidebar()"></div>
+  </div>
+
+  <script>
+    // Mobile sidebar toggle
+    function toggleSidebar() {
+      const sidebar = document.getElementById('adminSidebar');
+      const overlay = document.getElementById('adminOverlay');
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('show');
+    }
+
+    // Set active nav item
+    function setActiveNav(itemId) {
+      document.querySelectorAll('.admin-admin-nav-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      const activeItem = document.getElementById(itemId);
+      if (activeItem) {
+        activeItem.classList.add('active');
+      }
+    }
+
+    // Update breadcrumb
+    function updateBreadcrumb(title) {
+      document.getElementById('breadcrumbTitle').textContent = title;
+    }
+
+    // Check authentication
+    function ensureAuth() {
+      fetch('api/check-session.php')
+        .then(res => {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(data => {
+          if (!data.logged_in) {
+            console.log('Not logged in, redirecting to login');
+            window.location.href = 'login.html';
+          } else {
+            console.log('User logged in as:', data.user);
+            document.getElementById('adminUserLabel').textContent = data.user;
+          }
+        })
+        .catch(err => {
+          console.error('Auth check failed:', err);
+          window.location.href = 'login.html';
+        });
+    }
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      ensureAuth();
+    });
+  </script>
+</body>
+
+</html>
