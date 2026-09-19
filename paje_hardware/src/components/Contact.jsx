@@ -11,6 +11,26 @@ export default function Contact() {
 
     const formData = new FormData(e.target);
 
+    const email = formData.get("email")?.trim();
+    const phone = formData.get("phone")?.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\+?\d{10,13}$/;
+
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      setLoading(false);
+      return;
+    }
+
+    if (phone && !phoneRegex.test(phone)) {
+      alert(
+        "Please enter a valid phone number (10-13 digits, can start with +).",
+      );
+      setLoading(false);
+      return;
+    }
+
     formData.append("access_key", "79f2e63b-c81d-4721-a8f4-51784c070d91");
 
     formData.append("subject", "New Contact Message - Mshimba Hardware");
