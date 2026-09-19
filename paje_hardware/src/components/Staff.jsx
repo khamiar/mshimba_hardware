@@ -1,7 +1,4 @@
-import staff_1Image from "../assets/img/staff/1.jpg";
-import staff_2Image from "../assets/img/staff/2.jpg";
-import staff_3Image from "../assets/img/staff/3.jpg";
-import staff_4Image from "../assets/img/staff/4.jpg";
+import staff_Image from "../assets/img/profile1.jpeg";
 
 const staff = [
   {
@@ -9,7 +6,7 @@ const staff = [
     name: "STAFF NAME",
     role: "Sales Staff",
     experience: "Customer Service & Sales",
-    img: staff_1Image,
+    img: staff_Image,
     delay: 0,
   },
   {
@@ -17,7 +14,7 @@ const staff = [
     name: "STAFF NAME",
     role: "Storekeeper",
     experience: "Stock & Inventory",
-    img: staff_2Image,
+    img: staff_Image,
     delay: 80,
   },
   {
@@ -25,7 +22,7 @@ const staff = [
     name: "STAFF NAME",
     role: "Store Assistant",
     experience: "Store & Product Support",
-    img: staff_3Image,
+    img: staff_Image,
     delay: 160,
   },
   {
@@ -33,7 +30,7 @@ const staff = [
     name: "STAFF NAME",
     role: "Loading & Delivery Staff",
     experience: "Material Handling & Delivery",
-    img: staff_4Image,
+    img: staff_Image,
     delay: 240,
   },
 ];

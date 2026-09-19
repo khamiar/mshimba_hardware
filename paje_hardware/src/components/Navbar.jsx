@@ -25,14 +25,14 @@ export default function NavbarComponent({ onSearchClick }) {
       onToggle={(nextExpanded) => setExpanded(nextExpanded)}
     >
       <Container>
-        <Navbar.Brand href="#hero">
+        <Navbar.Brand href="/">
           <div className="blogo">
             <div className="bico">
               <i className="fas fa-tools"></i>
             </div>
             <div>
               <div className="bname">
-                Mshimba<span> Hardware</span>
+                Mshimba<span>Hardware</span>
               </div>
               <div className="bsub">Trusted Hardware Store & Shop</div>
             </div>

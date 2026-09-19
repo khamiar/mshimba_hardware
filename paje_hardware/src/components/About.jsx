@@ -38,7 +38,7 @@ export default function About() {
             <div className="sline lft"></div>
 
             <p className="sdesc mb-4">
-              Paje Hardware is a trusted local hardware shop serving customers
+              Mshimba Hardware is a trusted local hardware shop serving customers
               in Paje and surrounding areas. We provide reliable tools,
               construction materials, electrical and plumbing supplies, and
               other essential hardware products for homeowners, builders,

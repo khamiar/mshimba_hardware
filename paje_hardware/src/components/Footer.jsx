@@ -6,7 +6,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-lg-4">
             <div className="fnm">
-              Paje <span>Hardware</span>
+              Mshimba <span>Hardware</span>
             </div>
             <p className="fdesc">
               Your trusted hardware partner in Paje, Zanzibar. Quality tools,
@@ -99,7 +99,30 @@ export default function Footer() {
                 </div>
                 <div className="fciinfo">
                   <strong>{item.label}</strong>
-                  {item.value}
+
+                  { item.type === "phone" ? (
+                    <a
+                    href={`tel:${item.value}`}
+                    className="hrstime text-decoration-none"
+                    style={{ fontSize: ".8rem" }}
+                  >
+                    {item.value}
+                  </a>
+                  )
+                  : item.type === "email" ? (
+                    <a
+                    href={`mailto:${item.value}`}
+                    className="hrstime text-decoration-none"
+                    style={{ fontSize: ".8rem" }}
+                  >
+                    {item.value}
+                  </a>
+                  )
+                  : (
+                    <span className="hrstime" style={{ fontSize: ".8rem" }}>
+                      {item.value}
+                    </span>
+                  )}
                 </div>
               </div>
             ))}
@@ -111,14 +134,20 @@ export default function Footer() {
         <div className="container">
           <div className="d-flex justify-content-between align-items-center flex-wrap gap-2">
             <p>
-              © 2026 <span>Paje Hardware</span>. All Rights Reserved.
+              © 2026 <span>Mshimba Hardware</span>. All Rights Reserved.
             </p>
             <div>
               <p>
                 <i className="fa-solid fa-user-gear"></i> Built by:
-                <a href="#" className="text-decoration-none">
-                  <span>Khamiar Mshimba</span> YoungDev <span><i className="fa-solid fa-laptop-code"></i></span>
-                </a>
+                  <a
+                    href={`https://wa.me/255652105404`}
+                    className="hrstime text-decoration-none"
+                    style={{ fontSize: ".8rem" }}
+                  >
+                  <span>Khamiar Mshimba</span>
+                    YoungDev
+                  </a><span><i className="fa-solid fa-laptop-code"></i></span>
+                
               </p>
             </div>
           </div>

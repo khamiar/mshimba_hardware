@@ -187,7 +187,7 @@ export default function AboutPage() {
                               <span className="org-icon" aria-hidden="true"><i className="fas fa-users"></i></span>
                               <h4 className="org-role">Our Staff</h4>
                               <p className="org-description">Sales, stockkeeping, store support &amp; loading and delivery</p>
-                              <a href="#staff" className="d-inline-block mt-3">Meet our staff <span aria-hidden="true">&rarr;</span></a>
+                              <a href="#staff" className="d-inline-block mt-3 text-decoration-none">Meet our staff <span aria-hidden="true"><i className="fas fa-arrow-right"></i></span></a>
                             </div>
                           </li>
                         </ul>

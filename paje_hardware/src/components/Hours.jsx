@@ -128,7 +128,7 @@ export default function Hours() {
                     className="hrstime text-decoration-none"
                     style={{ fontSize: ".8rem" }}
                   >
-                    +255 652 105 404
+                    +255652105404
                   </a>
                 </span>
               </div>
@@ -143,11 +143,11 @@ export default function Hours() {
                 </span>
                 <span className="hrstime" style={{ fontSize: ".8rem" }}>
                   <a
-                    href="tel:+255652105404"
+                    href="tel:+255714162980"
                     className="hrstime text-decoration-none"
                     style={{ fontSize: ".8rem" }}
                   >
-                    +255 714 162 980
+                    +255714162980
                   </a>
                 </span>
               </div>
@@ -162,11 +162,11 @@ export default function Hours() {
                 </span>
                 <span className="hrstime" style={{ fontSize: ".8rem" }}>
                   <a
-                    href="tel:+255652105404"
+                    href="tel:+255776470450"
                     className="hrstime text-decoration-none"
                     style={{ fontSize: ".8rem" }}
                   >
-                    +255 776 470 450
+                    +255776470450
                   </a>
                 </span>
               </div>
@@ -180,11 +180,11 @@ export default function Hours() {
                 </span>
                 <span className="hrstime" style={{ fontSize: ".8rem" }}>
                   <a
-                    href="tel:+255652105404"
+                    href="tel:+255773110509"
                     className="hrstime text-decoration-none"
                     style={{ fontSize: ".8rem" }}
                   >
-                    +255 773 110 509
+                    +255773110509
                   </a>
                 </span>
               </div>

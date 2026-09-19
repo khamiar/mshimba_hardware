@@ -1521,6 +1521,9 @@ section {
   .tli:nth-child(odd) .tl-right {
     visibility: visible !important;
   }
+  .bname{
+    font-size: 1.5rem;
+  }
 }
 
 /* ===================== staff ===================== */
@@ -2780,8 +2783,12 @@ footer {
   section {
     padding: 55px 0;
   }
-  #topbar .top-contact span:last-child {
+  #topbar .top-contact span:last-child  {
     display: none;
+  }
+  #topbar .top-contact span {
+    display: inline-block;
+    font-size: 0.79rem;
   }
   .hcircle {
     width: 260px;

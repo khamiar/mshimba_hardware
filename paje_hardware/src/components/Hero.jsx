@@ -32,7 +32,7 @@ export default function Hero() {
               Get quality tools, building materials, plumbing supplies,
               electrical products, and everyday hardware essentials at
               affordable prices. Everything you need to build, repair, and
-              maintain your projects—all in one place.
+              maintain your projects all in one place.
             </p>
 
             <div className="d-flex flex-wrap gap-3 mb-2">
