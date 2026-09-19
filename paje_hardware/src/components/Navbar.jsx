@@ -32,7 +32,7 @@ export default function NavbarComponent({ onSearchClick }) {
             </div>
             <div>
               <div className="bname">
-                Paje<span> Hardware</span>
+                Mshimba<span> Hardware</span>
               </div>
               <div className="bsub">Trusted Hardware Store & Shop</div>
             </div>
@@ -65,7 +65,7 @@ export default function NavbarComponent({ onSearchClick }) {
             >
               <i className="fas fa-search"></i>
             </button>
-            <a href="#menu" className="nav-link nav-cta" onClick={closeNav}>
+            <a href="https://wa.me/255773110509" className="nav-link nav-cta" onClick={closeNav}>
               <i className="fas fa-shopping-bag me-1"></i>Order Now
             </a>
           </div>

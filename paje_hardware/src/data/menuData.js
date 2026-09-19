@@ -17,6 +17,9 @@ import water_pipe_jointsImage from "../assets/img/water/pipe_joints.jpeg";
 import water_pipe_connectorImage from "../assets/img/water/pipe_connector.jpeg";
 // General tools photo for products whose dedicated images are not available.
 import toolsImage from "../assets/img/tools.jpeg";
+import majiti from "../assets/img/building/majiti.jpeg";
+import waterPipe from "../assets/img/building/nondos.jpeg";
+
 export const menuData = [
   // ===================== HARDWARE =====================
 
@@ -309,7 +312,7 @@ export const menuData = [
     id: 18,
     category: "power",
     title: "Hand Tools",
-    img: toolsImage,
+    img: waterPipe,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.9,
@@ -326,7 +329,7 @@ export const menuData = [
     id: 19,
     category: "power",
     title: "Power Tools",
-    img: toolsImage,
+    img: majiti,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.8,

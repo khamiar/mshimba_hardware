@@ -1,29 +1,40 @@
 const schedule = [
-//   {
-//     day: "Monday - Tuesday",
-//     time: "07:15 AM - 18:00 PM",
-//     isOpen: true,
-//   },
   {
-    day: "Saturday - Thursday",
+    day: "Monday",
     time: "07:15 AM - 18:00 PM",
     isOpen: true,
   },
+  {
+    day: "Tuesday",
+    time: "07:15 AM - 18:00 PM",
+    isOpen: true,
+  },
+  {
+    day: "Wednesday",
+    time: "07:15 AM - 18:00 PM",
+    isOpen: true,
+  },
+  {
+    day: "Thursday",
+    time: "07:15 AM - 18:00 PM",
+    isOpen: true,
+  },
+
   {
     day: "Friday",
     time: "07:15 AM - 12:00 PM & 14:00 PM - 18:00 PM ",
     isOpen: true,
   },
-//   {
-//     day: "Saturday",
-//     time: "10:00 AM - 11:30 PM",
-//     isOpen: true,
-//   },
-//   {
-//     day: "Sunday",
-//     time: "11:00 AM - 09:00 PM",
-//     isOpen: true,
-//   },
+  {
+    day: "Saturday",
+    time: "07:15 AM - 18:00 PM",
+    isOpen: true,
+  },
+  {
+    day: "Sunday",
+    time: "07:15 AM - 18:00 PM",
+    isOpen: true,
+  },
 ];
 
 export default function Hours() {
@@ -76,10 +87,10 @@ export default function Hours() {
                 className="fas fa-truck-fast fa-2x mb-3"
                 style={{ color: "rgba(255,255,255,.8)" }}
               ></i>
-              <h4>Order Online</h4>
-              <p>Get hot food delivered in 25 minutes</p>
-              <a href="#menu" className="btnw">
-                Order Now →
+              <h4>Faster Delivery</h4>
+              <p>Need your building materials delivered? Contact our local transport partners for convenient delivery.</p>
+              <a href="" className="btnw">
+                <i className="fas fa-arrow-right" />
               </a>
             </div>
           </div>
@@ -97,22 +108,28 @@ export default function Hours() {
                 }}
               >
                 <i
-                  className="fas fa-map-marker-alt me-2"
+                  className="fas fa-id-card me-2"
                   style={{ color: "var(--secondary)" }}
                 ></i>
-                Find Us
+                Delivery Partners
               </h5>
 
               <div className="hrsrow">
                 <span className="hrsday">
                   <i
-                    className="fas fa-location-dot me-2"
+                    className="fas fa-phone me-2"
                     style={{ color: "var(--secondary)" }}
                   ></i>
-                  Address
+                  Urope
                 </span>
                 <span className="hrstime" style={{ fontSize: ".8rem" }}>
-                  42 Flavor Street, NY
+                  <a
+                    href="tel:+255652105404"
+                    className="hrstime text-decoration-none"
+                    style={{ fontSize: ".8rem" }}
+                  >
+                    +255 652 105 404
+                  </a>
                 </span>
               </div>
 
@@ -122,23 +139,53 @@ export default function Hours() {
                     className="fas fa-phone me-2"
                     style={{ color: "var(--secondary)" }}
                   ></i>
-                  Phone
+                  Faru
                 </span>
                 <span className="hrstime" style={{ fontSize: ".8rem" }}>
-                  +1 (800) 123-4567
+                  <a
+                    href="tel:+255652105404"
+                    className="hrstime text-decoration-none"
+                    style={{ fontSize: ".8rem" }}
+                  >
+                    +255 714 162 980
+                  </a>
                 </span>
               </div>
 
               <div className="hrsrow">
                 <span className="hrsday">
                   <i
-                    className="fas fa-envelope me-2"
+                    className="fas fa-phone me-2"
                     style={{ color: "var(--secondary)" }}
                   ></i>
-                  Email
+                  Ndomo
                 </span>
                 <span className="hrstime" style={{ fontSize: ".8rem" }}>
-                  hello@sarabfood.com
+                  <a
+                    href="tel:+255652105404"
+                    className="hrstime text-decoration-none"
+                    style={{ fontSize: ".8rem" }}
+                  >
+                    +255 776 470 450
+                  </a>
+                </span>
+              </div>
+              <div className="hrsrow">
+                <span className="hrsday">
+                  <i
+                    className="fas fa-phone me-2"
+                    style={{ color: "var(--secondary)" }}
+                  ></i>
+                  Uncle
+                </span>
+                <span className="hrstime" style={{ fontSize: ".8rem" }}>
+                  <a
+                    href="tel:+255652105404"
+                    className="hrstime text-decoration-none"
+                    style={{ fontSize: ".8rem" }}
+                  >
+                    +255 773 110 509
+                  </a>
                 </span>
               </div>
             </div>

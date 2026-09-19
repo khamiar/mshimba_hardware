@@ -33,8 +33,8 @@ export default function Home() {
   return (
     <>
       <TopBar />
-      <Navbar onSearchClick={() => setSearchOpen(true)} />
-      <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+      <Navbar  />
+      {/* <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} /> */}
 
       <Hero />
       <Marquee />
@@ -51,7 +51,6 @@ export default function Home() {
       <Newsletter /> */}
       <Contact />
       <Footer />
-      {/* <WhatsAppFloat/> */}
       <BackToTop />
     </>
   );

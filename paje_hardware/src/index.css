@@ -782,36 +782,238 @@ section {
   margin: 0;
 }
 
-/* Structure cards */
-.struct-card {
+/* Management hierarchy: nested lists preserve reporting relationships. */
+.about-structure {
   background: var(--cream);
-  border-radius: 16px;
-  padding: 28px 20px;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-  border-top: 4px solid var(--primary);
 }
-
-
-
-.struct-role {
+.structure-intro {
+  max-width: 580px;
+  margin: 18px auto 0;
+}
+.org-tree {
+  --org-line: var(--primary);
+  --org-gap: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.org-tree ul {
+  display: flex;
+  position: relative;
+  padding: var(--org-gap) 0 0;
+  margin: 0;
+  list-style: none;
+}
+.org-tree li {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  padding: var(--org-gap) 12px 0;
+  text-align: center;
+}
+/* Each child draws half of the horizontal branch and its vertical stem. */
+.org-tree li::before,
+.org-tree li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: var(--org-gap);
+  border-top: 2px solid var(--org-line);
+  pointer-events: none;
+}
+.org-tree li::before {
+  right: 50%;
+}
+.org-tree li::after {
+  left: 50%;
+  border-left: 2px solid var(--org-line);
+}
+.org-tree li:first-child::before,
+.org-tree li:last-child::after {
+  border: 0;
+}
+.org-tree li:last-child::before {
+  border-right: 2px solid var(--org-line);
+  border-radius: 0 8px 0 0;
+}
+.org-tree li:first-child::after {
+  border-radius: 8px 0 0 0;
+}
+.org-tree li:only-child {
+  padding: 0;
+}
+.org-tree li:only-child::before,
+.org-tree li:only-child::after {
+  display: none;
+}
+.org-tree ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: var(--org-gap);
+  border-left: 2px solid var(--org-line);
+}
+.org-tree .org-root {
+  padding: 0;
+}
+.org-tree .org-root::before {
+  display: none;
+}
+.org-node {
+  position: relative;
+  width: 320px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 24px 20px;
+  background: var(--light);
+  border: 1px solid var(--cream2);
+  border-top: 3px solid var(--primary);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow-wrap: anywhere;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.org-node:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-lg);
+}
+.org-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  background: var(--cream2);
+  color: var(--primary);
+}
+.org-node .org-role {
+  margin: 0 0 8px;
+  color: var(--primary);
+  font-family: "Poppins", sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--primary);
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 8px;
+  line-height: 1.5;
 }
-
-.struct-card h5 {
-  font-size: 1.1rem;
+.org-node .org-name {
+  margin: 0 0 8px;
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.35;
+}
+.org-node .org-description {
+  margin: 0;
+  color: var(--sand);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+.org-node-owner {
+  background: var(--primary);
+  border-color: var(--primary);
+  border-top-color: var(--secondary);
+}
+.org-node-owner .org-role,
+.org-node-owner .org-name,
+.org-node-owner .org-description {
+  color: var(--light);
+}
+.org-node-owner .org-icon {
+  background: var(--light);
+}
+.org-node-marketing,
+.org-node-digital {
+  border-top-color: var(--secondary);
+}
+.org-node-digital {
+  box-shadow: none;
+}
+.org-tree .org-channels > li {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+.org-channel {
+  padding: 18px 10px;
+  height: 100%;
+  border-top: 1px solid var(--cream2);
+  box-shadow: none;
+}
+.org-channel > i {
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.org-channel h5 {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.5;
   margin-bottom: 6px;
 }
-
-.struct-card p {
-  color: #888;
-  font-size: 0.85rem;
-  margin: 0;
+.org-channel .org-description {
+  font-size: 0.73rem;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .org-tree { --org-gap: 22px; }
+  .org-tree li { padding-right: 8px; padding-left: 8px; }
+  .org-node { padding: 20px 14px; }
+  .org-channel { padding: 14px 6px; }
+}
+/* On phones, a shared left rail keeps sibling managers visibly related. */
+@media (max-width: 767px) {
+  .org-tree { max-width: 480px; }
+  .org-tree ul:not(.org-root) {
+    display: block;
+    padding: 22px 0 0 16px;
+    margin-left: 12px;
+    border-left: 2px solid var(--org-line);
+  }
+  .org-tree ul::before { display: none; }
+  .org-tree li,
+  .org-tree li:only-child,
+  .org-tree .org-channels > li {
+    padding: 0;
+    text-align: left;
+  }
+  .org-tree li + li { margin-top: 22px; }
+  .org-tree li::after { display: none; }
+  .org-tree ul:not(.org-root) > li::before {
+    display: block;
+    left: -16px;
+    right: auto;
+    top: 26px;
+    width: 16px;
+    height: 0;
+    border: 0;
+    border-top: 2px solid var(--org-line);
+    border-radius: 0;
+  }
+  .org-node {
+    width: 100%;
+    padding: 20px 16px;
+    text-align: left;
+  }
+  .org-tree .org-channels {
+    margin-left: 0;
+    padding-left: 12px;
+  }
+  .org-tree .org-channels > li::before {
+    left: -12px;
+    width: 12px;
+  }
+  .org-channel { padding: 14px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-structure [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .org-node { transition: none; }
 }
 
 /* Story image wrapper */
@@ -854,9 +1056,6 @@ section {
   border-color: rgba(232, 40, 26, 0.35);
 }
 
-.about-structure{
-  
-}
 
 /* ===================== MENU ===================== */
 #menu {

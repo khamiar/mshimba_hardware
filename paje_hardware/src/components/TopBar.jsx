@@ -8,7 +8,7 @@ export default function TopBar() {
               <i className="fas fa-phone-alt"></i> +255 773 110 509
             </span>
             <span>
-              <i className="fas fa-envelope"></i> pajehardware@gmail.com
+              <i className="fas fa-envelope"></i> suleimanmshimba@gmail.com
             </span>
             <span>
               <i className="fas fa-map-marker-alt"></i> Paje, Jambiani Road

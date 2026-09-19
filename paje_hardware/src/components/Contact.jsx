@@ -53,7 +53,7 @@ export default function Contact() {
                 {
                   icon: "fa-envelope",
                   label: "Email",
-                  value: "mshimbahardware@gmail.com",
+                  value: "suleimanmshimba@gmail.com",
                 },
                 {
                   icon: "fa-clock",

@@ -34,43 +34,56 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Short Story */}
+      {/* Our Story */}
       <section className="about-story">
         <div className="container">
           <div className="row align-items-center g-5">
-            {/* Text first → appears on LEFT */}
+
+            {/* Text */}
             <div className="col-lg-6" data-aos="fade-right">
               <span className="slbl">Our Story</span>
+
               <h2 className="stitle text-start">
                 Building Trust <span>Through Quality</span>
               </h2>
+
               <div className="sline lft"></div>
+
               <p className="sdesc">
                 Mshimba Hardware is a trusted hardware and building materials
-                store in Paje, Zanzibar, providing quality construction supplies
-                including iron rods, timber, cement, electrical accessories,
-                plumbing materials, tools, and other essential building
-                products. We proudly serve homeowners, builders, contractors,
-                and technicians with reliable products, competitive prices, and
-                dependable service for projects of every size.
+                store located in Paje, Zanzibar. We provide a wide range of
+                quality construction and maintenance products for homeowners,
+                builders, contractors, technicians, and businesses.
               </p>
+
               <p className="sdesc">
-                From everyday repairs to major construction projects, our goal
-                is to make it easier for our customers to find the right
-                materials and tools they need all in one place.
+                Our products include iron rods (nondo), timber and other wood
+                materials, cement, nails, electrical accessories, plumbing
+                supplies, water materials, hand tools, and other essential
+                building materials. We are committed to providing reliable
+                products at competitive prices while giving our customers
+                friendly and dependable service.
+              </p>
+
+              <p className="sdesc">
+                Whether you are building a new home, working on a commercial
+                project, carrying out repairs, or looking for everyday
+                construction supplies, Mshimba Hardware aims to make it easy
+                for you to find the materials you need in one place.
               </p>
             </div>
 
-            {/* Image second → appears on RIGHT */}
+            {/* Image */}
             <div className="col-lg-6" data-aos="fade-left">
               <div className="story-img-wrap">
                 <img
                   src={shop2Image}
-                  alt="Our Story"
+                  alt="Mshimba Hardware Store"
                   className="story-img"
                 />
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -79,21 +92,22 @@ export default function AboutPage() {
       <section className="vmg-section">
         <div className="container">
           <div className="row g-4">
+
             {[
               {
                 icon: "fa-eye",
                 title: "Our Vision",
-                text: "To become the most loved fast-casual restaurant brand, known for exceptional taste, warm hospitality, and sustainable practices.",
+                text: "To become a trusted and leading hardware and building materials supplier in Zanzibar, recognized for quality products, fair prices, and dependable customer service.",
               },
               {
                 icon: "fa-bullseye",
                 title: "Our Mission",
-                text: "To craft high-quality, flavorful meals using fresh ingredients, while creating memorable experiences for every guest who walks through our doors.",
+                text: "To provide quality construction, electrical, plumbing, timber, and general hardware products while helping our customers complete their projects with confidence.",
               },
               {
                 icon: "fa-flag",
                 title: "Our Goals",
-                text: "Expand to 20 cities by 2028, reduce food waste by 40%, and continue training the next generation of passionate Staff.",
+                text: "To continuously expand our product range, improve customer service, maintain competitive prices, and build long-term relationships with homeowners, contractors, technicians, and businesses.",
               },
             ].map((item, i) => (
               <div
@@ -106,11 +120,13 @@ export default function AboutPage() {
                   <div className="vmg-icon">
                     <i className={`fas ${item.icon}`}></i>
                   </div>
+
                   <h4>{item.title}</h4>
                   <p>{item.text}</p>
                 </div>
               </div>
             ))}
+
           </div>
         </div>
       </section>
@@ -118,60 +134,100 @@ export default function AboutPage() {
       {/* History Timeline */}
       <section className="about-history">
         <div className="container">
-          {/* You can reuse the same timeline from History.jsx */}
           <History />
         </div>
       </section>
 
+      {/* Staff */}
       <Staff />
 
-      {/* Structure / Team */}
-      <section className="about-structure">
+      {/* Structure / Management */}
+      <section className="about-structure" aria-labelledby="structure-title">
         <div className="container">
           <div className="text-center mb-5" data-aos="fade-up">
             <span className="slbl">How We Work</span>
-            <h2 className="stitle">
+            <h2 className="stitle" id="structure-title">
               Our <span>Structure</span>
             </h2>
             <div className="sline"></div>
+            <p className="sdesc structure-intro">
+              Clear leadership, dependable operations, and a connected presence
+              for our customers in Paje, Zanzibar.
+            </p>
           </div>
 
-          <div className="row g-4 justify-content-center">
-            {[
-              {
-                role: "Founder & CEO",
-                name: "Ahmed Sarab",
-                desc: "Vision & Strategy",
-              },
-              {
-                role: "Head Chef",
-                name: "Alice Mortal",
-                desc: "Kitchen Operations",
-              },
-              {
-                role: "Operations Manager",
-                name: "Michael Corn",
-                desc: "Daily Management",
-              },
-              {
-                role: "Marketing Lead",
-                name: "Sofia Ramirez",
-                desc: "Brand & Growth",
-              },
-            ].map((person, i) => (
-              <div
-                className="col-sm-6 col-lg-3"
-                key={person.name}
-                data-aos="fade-up"
-                data-aos-delay={i * 80}
-              >
-                <div className="struct-card">
-                  <div className="struct-role">{person.role}</div>
-                  <h5>{person.name}</h5>
-                  <p>{person.desc}</p>
+          <div className="org-tree" data-aos="fade-up">
+            <ul className="org-root" aria-label="Mshimba Hardware management hierarchy">
+              <li>
+                <div className="org-node org-node-owner">
+                  <span className="org-icon" aria-hidden="true"><i className="fas fa-building"></i></span>
+                  <h3 className="org-role">Founder &amp; Owner</h3>
+                  <p className="org-name">Mshimba Seif Ali</p>
+                  <p className="org-description">Business leadership &amp; long-term direction</p>
                 </div>
-              </div>
-            ))}
+                <ul aria-label="Reports to Founder and Owner">
+                  <li>
+                    <div className="org-node">
+                      <span className="org-icon" aria-hidden="true"><i className="fas fa-store"></i></span>
+                      <h3 className="org-role">Store Manager</h3>
+                      <p className="org-name">Suleiman Mshimba Seif</p>
+                      <p className="org-description">Store management &amp; customer service</p>
+                    </div>
+                    <ul className="org-management" aria-label="Reports to Store Manager">
+                      <li>
+                        <div className="org-node">
+                          <span className="org-icon" aria-hidden="true"><i className="fas fa-boxes-stacked"></i></span>
+                          <h3 className="org-role">Operations Manager</h3>
+                          <p className="org-name">Mudrik Mshimba Seif</p>
+                          <p className="org-description">Daily operations, stock management &amp; material handling</p>
+                        </div>
+                        <ul aria-label="Reports to Operations Manager">
+                          <li>
+                            <div className="org-node">
+                              <span className="org-icon" aria-hidden="true"><i className="fas fa-users"></i></span>
+                              <h4 className="org-role">Our Staff</h4>
+                              <p className="org-description">Sales, stockkeeping, store support &amp; loading and delivery</p>
+                              <a href="#staff" className="d-inline-block mt-3">Meet our staff <span aria-hidden="true">&rarr;</span></a>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <div className="org-node org-node-marketing">
+                          <span className="org-icon" aria-hidden="true"><i className="fas fa-bullhorn"></i></span>
+                          <h3 className="org-role">Marketing Manager</h3>
+                          <p className="org-name">Khamiar Mshimba Seif</p>
+                          <p className="org-description">Website, digital marketing &amp; online brand presence</p>
+                        </div>
+                        <ul aria-label="Marketing responsibilities">
+                          <li>
+                            <div className="org-node org-node-digital">
+                              <h4 className="org-role">Digital Presence</h4>
+                              <p className="org-description">Helping customers find us, explore our products, and stay connected.</p>
+                            </div>
+                            <ul className="org-channels" aria-label="Digital presence channels">
+                              {[
+                                { icon: "fa-laptop", title: "Website", detail: "Products & enquiries" },
+                                { icon: "fa-location-dot", title: "Google Business Profile", detail: "Local discovery & reviews" },
+                                { icon: "fa-comments", title: "Social Media", detail: "Updates & community" },
+                              ].map((channel) => (
+                                <li key={channel.title}>
+                                  <div className="org-node org-channel">
+                                    <i className={`fas ${channel.icon}`} aria-hidden="true"></i>
+                                    <h5>{channel.title}</h5>
+                                    <p className="org-description">{channel.detail}</p>
+                                  </div>
+                                </li>
+                              ))}
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </div>
         </div>
       </section>

@@ -4,8 +4,10 @@ import dangote from "../assets/img/building/dangote.jpeg";
 import goldstar2 from "../assets/img/building/goldstar2.jpeg";
 import wiring from "../assets/img/electric/wiring.jpeg";
 import greenpipe from "../assets/img/water/greenpipe.jpeg";
-import work5 from "../assets/img/portfolio/work5.jpg";
 import toolsImage from "../assets/img/tools.jpeg";
+import hammer from "../assets/img/hand/hammer.jpeg";
+import saw from "../assets/img/hand/Saw.jpeg";
+import wallputty from "../assets/img/building/wallput.jpeg";
 
 const galleryItems = [
   {
@@ -40,22 +42,23 @@ const galleryItems = [
   },
   {
     id: 5,
-    img: work5,
+    img: hammer,
     title: "Tools & Equipment",
     desc: "Reliable hand tools and construction equipment for builders, technicians, carpenters and everyday maintenance work.",
   },
   {
     id: 6,
-    img: work5,
+    img: saw,
     title: "Tools & Equipment",
     desc: "Reliable hand tools and construction equipment for builders, technicians, carpenters and everyday maintenance work.",
   },
   {
     id: 7,
-    img: toolsImage,
+    img: wallputty,
     title: "Tools & Equipment",
     desc: "Reliable hand tools and construction equipment for builders, technicians, carpenters and everyday maintenance work.",
   },
+  
 ]
 
 export default function Gallery() {
