@@ -1,13 +1,13 @@
 import { useState } from "react";
+import Swal from 'sweetalert2'
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setSubmitted(false);
+    // setSubmitted(false);
 
     const formData = new FormData(e.target);
 
@@ -45,7 +45,13 @@ export default function Contact() {
       const data = await response.json();
 
       if (data.success) {
-        setSubmitted(true);
+        Swal.fire({
+          icon: 'success',
+          title: 'Message Sent!',
+          text: "Thank you for reaching out. We'll get back to you soon.",
+          confirmButtonText: 'OK'
+        });
+        // setSubmitted(true);
         e.target.reset();
       } else {
         alert(data.message || "Something went wrong. Please try again.");
@@ -220,12 +226,12 @@ export default function Contact() {
                 </div>
               </form>
 
-              {submitted && (
+              {/* {submitted && (
                 <div className="sucmsg" style={{ display: "block" }}>
                   <i className="fas fa-check-circle"></i>
                   <p>Message sent! We'll reply within 30 min.</p>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>
