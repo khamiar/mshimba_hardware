@@ -79,13 +79,15 @@ export default function Footer() {
               },
               {
                 icon: "fa-phone-alt",
+                type: "phone",
                 label: "Phone",
                 value: "+255 773 110 509",
               },
               {
                 icon: "fa-envelope",
+                type: "email",
                 label: "Email",
-                value: "pajehardware@gmail.com",
+                value: "info.mshimbahardware@gmail.com",
               },
               {
                 icon: "fa-clock",

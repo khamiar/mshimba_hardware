@@ -4,13 +4,40 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+    setSubmitted(false);
+
+    const formData = new FormData(e.target);
+
+    formData.append("access_key", "79f2e63b-c81d-4721-a8f4-51784c070d91");
+
+    formData.append("subject", "New Contact Message - Mshimba Hardware");
+    formData.append("from_name", "Mshimba Hardware Website");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        e.target.reset();
+      } else {
+        alert(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert(
+        "Unable to send your message. Please check your internet connection.",
+      );
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 1500);
+    }
   };
 
   return (
@@ -53,7 +80,7 @@ export default function Contact() {
                 {
                   icon: "fa-envelope",
                   label: "Email",
-                  value: "suleimanmshimba@gmail.com",
+                  value: "info.mshimbahardware@gmail.com",
                 },
                 {
                   icon: "fa-clock",
@@ -98,48 +125,61 @@ export default function Contact() {
                     <label className="flbl">Your Name *</label>
                     <input
                       type="text"
+                      name="name"
                       className="fctrl"
                       placeholder="Full Name"
                       required
                     />
                   </div>
+
                   <div className="col-sm-6">
                     <label className="flbl">Email Address *</label>
                     <input
                       type="email"
+                      name="email"
                       className="fctrl"
                       placeholder="you@email.com"
                       required
                     />
                   </div>
+
                   <div className="col-sm-6">
                     <label className="flbl">Phone Number</label>
                     <input
                       type="tel"
+                      name="phone"
                       className="fctrl"
                       placeholder="+255 000 000 000"
                     />
                   </div>
+
                   <div className="col-sm-6">
                     <label className="flbl">Subject *</label>
-                    <select className="fctrl" required>
-                      <option>Select Category</option>
-                      <option>Building Material</option>
-                      <option>Hardware Tools</option>
-                      <option>Blumbing fixture</option>
-                      <option>Electricity Suplier</option>
-                      <option>Others...</option>
+                    <select name="category" className="fctrl" required>
+                      <option value="">Select Category</option>
+                      <option value="Building Material">
+                        Building Material
+                      </option>
+                      <option value="Hardware Tools">Hardware Tools</option>
+                      <option value="Plumbing">Plumbing</option>
+                      <option value="Electrical Products">
+                        Electrical Products
+                      </option>
+                      <option value="Others">Others</option>
                     </select>
                   </div>
+
                   <div className="col-12">
                     <label className="flbl">Message *</label>
                     <textarea
+                      name="message"
                       className="fctrl"
                       rows="5"
                       placeholder="Write your message here..."
                       required
                     ></textarea>
                   </div>
+
                   <div className="col-12">
                     <button
                       type="submit"
