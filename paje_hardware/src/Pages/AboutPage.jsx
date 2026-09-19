@@ -1,3 +1,4 @@
+import shop2Image from "../assets/img/shop2.jpg";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
@@ -64,7 +65,7 @@ export default function AboutPage() {
             <div className="col-lg-6" data-aos="fade-left">
               <div className="story-img-wrap">
                 <img
-                  src="src/assets/img/shop2.jpg"
+                  src={shop2Image}
                   alt="Our Story"
                   className="story-img"
                 />

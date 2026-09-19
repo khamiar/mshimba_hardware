@@ -1,3 +1,9 @@
+import menu_1Image from "../assets/img/menu/1.jpg";
+import menu_2Image from "../assets/img/menu/2.jpg";
+import menu_3Image from "../assets/img/menu/3.jpg";
+import menu_4Image from "../assets/img/menu/4.jpg";
+import menu_5Image from "../assets/img/menu/5.jpg";
+import menu_6Image from "../assets/img/menu/6.jpg";
 import { useState, useEffect } from 'react';
 
 export default function SearchOverlay({ isOpen, onClose }) {
@@ -23,13 +29,13 @@ export default function SearchOverlay({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   const categories = [
-    { name: 'All Items', cat: 'all', img: 'src/assets/img/menu/1.jpg' },
-    { name: 'Burgers', cat: 'burgers', img: 'src/assets/img/menu/1.jpg' },
-    { name: 'Pizza', cat: 'pizza', img: 'src/assets/img/menu/2.jpg' },
-    { name: 'Chicken', cat: 'chicken', img: 'src/assets/img/menu/3.jpg' },
-    { name: 'Wraps', cat: 'wraps', img: 'src/assets/img/menu/4.jpg' },
-    { name: 'Pasta', cat: 'pasta', img: 'src/assets/img/menu/5.jpg' },
-    { name: 'Desserts', cat: 'desserts', img: 'src/assets/img/menu/6.jpg' },
+    { name: 'All Items', cat: 'all', img: menu_1Image },
+    { name: 'Burgers', cat: 'burgers', img: menu_1Image },
+    { name: 'Pizza', cat: 'pizza', img: menu_2Image },
+    { name: 'Chicken', cat: 'chicken', img: menu_3Image },
+    { name: 'Wraps', cat: 'wraps', img: menu_4Image },
+    { name: 'Pasta', cat: 'pasta', img: menu_5Image },
+    { name: 'Desserts', cat: 'desserts', img: menu_6Image },
   ];
 
   const trending = [

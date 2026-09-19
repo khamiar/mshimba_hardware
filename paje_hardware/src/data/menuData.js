@@ -1,3 +1,22 @@
+import hand_hammersImage from "../assets/img/hand/hammers.jpeg";
+import hand_screwdriversetImage from "../assets/img/hand/screwdriverset.jpeg";
+import hand_drillsetImage from "../assets/img/hand/drillset.jpeg";
+import building_coralImage from "../assets/img/building/coral.jpeg";
+import building_goldstarImage from "../assets/img/building/goldstar.jpeg";
+import building_wallputImage from "../assets/img/building/wallput.jpeg";
+import building_paintingrollerImage from "../assets/img/building/paintingroller.jpeg";
+import building_cementeImage from "../assets/img/building/cemente.jpeg";
+import building_metalsImage from "../assets/img/building/metals.jpeg";
+import building_metalImage from "../assets/img/building/metal.jpeg";
+import building_batirandImage from "../assets/img/building/batirand.jpeg";
+import electric_wiringImage from "../assets/img/electric/wiring.jpeg";
+import electric_switchImage from "../assets/img/electric/switch.jpeg";
+import electric_hinsenceacImage from "../assets/img/electric/hinsenceac.jpeg";
+import water_greenpipeImage from "../assets/img/water/greenpipe.jpeg";
+import water_pipe_jointsImage from "../assets/img/water/pipe_joints.jpeg";
+import water_pipe_connectorImage from "../assets/img/water/pipe_connector.jpeg";
+// General tools photo for products whose dedicated images are not available.
+import toolsImage from "../assets/img/tools.jpeg";
 export const menuData = [
   // ===================== HARDWARE =====================
 
@@ -5,7 +24,7 @@ export const menuData = [
     id: 1,
     category: "hand",
     title: "Hammer",
-    img: "src/assets/img/hand/hammers.jpeg",
+    img: hand_hammersImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.8,
@@ -22,7 +41,7 @@ export const menuData = [
     id: 2,
     category: "hand",
     title: "Screwdriver Set",
-    img: "src/assets/img/hand/screwdriverset.jpeg",
+    img: hand_screwdriversetImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.7,
@@ -39,7 +58,7 @@ export const menuData = [
     id: 3,
     category: "hand",
     title: "Drill Machine",
-    img: "src/assets/img/hand/drillset.jpeg",
+    img: hand_drillsetImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.9,
@@ -57,7 +76,7 @@ export const menuData = [
     id: 4,
     category: "paint",
     title: "Rangi za Maji",
-    img: "src/assets/img/building/coral.jpeg",
+    img: building_coralImage,
     price: "Contact for Price",
     oldPrice: null,
     unit: "1L / 4L / 20L",
@@ -72,7 +91,7 @@ export const menuData = [
     id: 5,
     category: "paint",
     title: "Rangi za Mafuta",
-    img: "src/assets/img/building/goldstar.jpeg",
+    img: building_goldstarImage,
     price: "Contact for Price",
     oldPrice: null,
     unit: "1L / 4L",
@@ -87,7 +106,7 @@ export const menuData = [
     id: 6,
     category: "paint",
     title: "Wall Putty",
-    img: "src/assets/img/building/wallput.jpeg",
+    img: building_wallputImage,
     price: "Contact for Price",
     oldPrice: null,
     unit: "5kg / 20kg",
@@ -102,7 +121,7 @@ export const menuData = [
     id: 7,
     category: "paint",
     title: "Paint Rollers & Brushes",
-    img: "src/assets/img/building/paintingroller.jpeg",
+    img: building_paintingrollerImage,
     price: "Contact for Price",
     oldPrice: null,
     unit: "Piece / Set",
@@ -118,7 +137,7 @@ export const menuData = [
     id: 8,
     category: "building",
     title: "Cement",
-    img: "src/assets/img/building/cemente.jpeg",
+    img: building_cementeImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.9,
@@ -135,7 +154,7 @@ export const menuData = [
     id: 9,
     category: "building",
     title: "Metal & Pipes",
-    img: "src/assets/img/building/metals.jpeg",
+    img: building_metalsImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.7,
@@ -152,7 +171,7 @@ export const menuData = [
     id: 10,
     category: "building",
     title: "Steel Reinforcement Bars (Nondo)",
-    img: "src/assets/img/building/metal.jpeg",
+    img: building_metalImage,
     price: "Contact for Price",
     oldPrice: null,
     unit: "Per Piece",
@@ -167,7 +186,7 @@ export const menuData = [
     id: 11,
     category: "building",
     title: "Large-Corrugation Roofing Sheets",
-    img: "src/assets/img/building/batirand.jpeg",
+    img: building_batirandImage,
     price: "Contact for Price",
     oldPrice: null,
     unit: "Per Sheet",
@@ -184,7 +203,7 @@ export const menuData = [
     id: 12,
     category: "electric",
     title: "Electrical Cables",
-    img: "src/assets/img/electric/wiring.jpeg",
+    img: electric_wiringImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.9,
@@ -201,7 +220,7 @@ export const menuData = [
     id: 13,
     category: "electric",
     title: "Electrical Switches",
-    img: "src/assets/img/electric/switch.jpeg",
+    img: electric_switchImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.7,
@@ -218,7 +237,7 @@ export const menuData = [
     id: 14,
     category: "electric",
     title: "Sockets & Plugs",
-    img: "src/assets/img/electric/hinsenceac.jpeg",
+    img: electric_hinsenceacImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.8,
@@ -237,7 +256,7 @@ export const menuData = [
     id: 15,
     category: "plumbing",
     title: "PVC Pipes",
-    img: "src/assets/img/water/greenpipe.jpeg",
+    img: water_greenpipeImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.9,
@@ -254,7 +273,7 @@ export const menuData = [
     id: 16,
     category: "plumbing",
     title: "Pipe Connectors",
-    img: "src/assets/img/water/pipe_joints.jpeg",
+    img: water_pipe_jointsImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.8,
@@ -271,7 +290,7 @@ export const menuData = [
     id: 17,
     category: "plumbing",
     title: "Water Taps",
-    img: "src/assets/img/water/pipe_connector.jpeg",
+    img: water_pipe_connectorImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.7,
@@ -290,7 +309,7 @@ export const menuData = [
     id: 18,
     category: "power",
     title: "Hand Tools",
-    img: "src/assets/img/hand_tools.jpeg",
+    img: toolsImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.9,
@@ -307,7 +326,7 @@ export const menuData = [
     id: 19,
     category: "power",
     title: "Power Tools",
-    img: "src/assets/img/power_tools.jpeg",
+    img: toolsImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.8,
@@ -324,7 +343,7 @@ export const menuData = [
     id: 20,
     category: "power",
     title: "Measuring Tools",
-    img: "src/assets/img/measuring_tools.jpeg",
+    img: toolsImage,
     price: "Contact for Price",
     oldPrice: null,
     rating: 4.7,

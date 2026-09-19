@@ -1,51 +1,58 @@
 import { useState, useEffect } from "react";
+import shop3 from "../assets/img/shop3.jpg";
+import dangote from "../assets/img/building/dangote.jpeg";
+import goldstar2 from "../assets/img/building/goldstar2.jpeg";
+import wiring from "../assets/img/electric/wiring.jpeg";
+import greenpipe from "../assets/img/water/greenpipe.jpeg";
+import work5 from "../assets/img/portfolio/work5.jpg";
+import toolsImage from "../assets/img/tools.jpeg";
 
 const galleryItems = [
   {
     id: 0,
-    img: "src/assets/img/shop3.jpg",
+    img: shop3,
     title: "Our Hardware Store",
     desc: "A wide range of quality hardware and building materials available for construction, renovation and home improvement projects.",
   },
   {
     id: 1,
-    img: "src/assets/img/building/dangote.jpeg",
+    img: dangote,
     title: "Building Materials",
     desc: "Quality cement, sand, blocks, timber and other essential materials for residential and commercial construction projects.",
   },
   {
     id: 2,
-    img: "src/assets/img/building/goldstar2.jpeg",
+    img: goldstar2,
     title: "Paints & Finishing",
     desc: "Interior and exterior paints, brushes, rollers and finishing products to help give your building a clean and lasting finish.",
   },
   {
     id: 3,
-    img: "src/assets/img/electric/wiring.jpeg",
+    img: wiring,
     title: "Electrical Supplies",
     desc: "Electrical cables, switches, sockets, plugs, lighting accessories and other electrical installation materials.",
   },
   {
     id: 4,
-    img: "src/assets/img/water/greenpipe.jpeg",
+    img: greenpipe,
     title: "Plumbing & Water Materials",
     desc: "PVC pipes, fittings, connectors, taps and other plumbing materials for reliable water and drainage installations.",
   },
   {
     id: 5,
-    img: "src/assets/img/portfolio/work5.jpg",
+    img: work5,
     title: "Tools & Equipment",
     desc: "Reliable hand tools and construction equipment for builders, technicians, carpenters and everyday maintenance work.",
   },
   {
     id: 6,
-    img: "src/assets/img/portfolio/work5.jpg",
+    img: work5,
     title: "Tools & Equipment",
     desc: "Reliable hand tools and construction equipment for builders, technicians, carpenters and everyday maintenance work.",
   },
   {
     id: 7,
-    img: "src/assets/img/off-img.jpg",
+    img: toolsImage,
     title: "Tools & Equipment",
     desc: "Reliable hand tools and construction equipment for builders, technicians, carpenters and everyday maintenance work.",
   },

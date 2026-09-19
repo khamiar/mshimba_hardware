@@ -1,3 +1,6 @@
+import React from "react";
+import toolsImg from "../assets/img/tools.jpeg";
+
 export default function Hero() {
   return (
     <section id="hero">
@@ -86,7 +89,7 @@ export default function Hero() {
           <div className="col-lg-6">
             <div style={{ position: "relative", textAlign: "center" }}>
               <div className="hcircle">
-                <img src="src/assets/img/tools.jpeg" alt="Burger" />
+                <img src={toolsImg} alt="Burger" />
               </div>
 
               <div className="fcard fc1">

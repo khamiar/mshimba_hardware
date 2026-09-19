@@ -1,45 +1,55 @@
+import React from "react";
+import toolsImg from "../assets/img/tools.jpeg";
+import handImg from "../assets/img/hand/hand.png";
+import paintImg from "../assets/img/building/paintlogo.jpeg";
+import buildingImg from "../assets/img/building/buildinglogo.png";
+import electricImg from "../assets/img/electric/elec.jpeg";
+import plumbingImg from "../assets/img/water/plumbing.jpeg";
+
+
+
 export default function Category({ onCategoryClick }) {
   const categories = [
     {
       name: "All Items",
       filter: "all",
       count: "99 items",
-      img: "src/assets/img/tools.jpeg",
+      img: toolsImg,
       delay: 0,
     },
     {
       name: "Hand Tools",
       filter: "hand",
       count: "24 items",
-      img: "src/assets/img/hand/hand.png",
+      img: handImg,
       delay: 70,
     },
     {
       name: "Paint & Accessories",
       filter: "paint",
       count: "18 items",
-      img: "src/assets/img/building/paintlogo.jpeg",
+      img: paintImg,
       delay: 140,
     },
     {
       name: "Building Materials",
       filter: "building",
       count: "15 items",
-      img: "src/assets/img/building/buildinglogo.png",
+      img: buildingImg,
       delay: 210,
     },
     {
       name: "Electrical Supplies",
       filter: "electric",
       count: "12 items",
-      img: "src/assets/img/electric/elec.jpeg",
+      img: electricImg,
       delay: 280,
     },
     {
       name: "Plumbing Supplies",
       filter: "plumbing",
       count: "20 items",
-      img: "src/assets/img/water/plumbing.jpeg",
+      img: plumbingImg,
       delay: 350,
     },
   ];

@@ -1,3 +1,6 @@
+import blog_1Image from "../assets/img/blog/1.jpg";
+import blog_2Image from "../assets/img/blog/2.jpg";
+import blog_3Image from "../assets/img/blog/3.jpg";
 const posts = [
   {
     id: 1,
@@ -7,7 +10,7 @@ const posts = [
     comments: 24,
     day: '14',
     month: 'Mar',
-    img: 'src/assets/img/blog/1.jpg',
+    img: blog_1Image,
   },
   {
     id: 2,
@@ -17,7 +20,7 @@ const posts = [
     comments: 18,
     day: '28',
     month: 'Feb',
-    img: 'src/assets/img/blog/2.jpg',
+    img: blog_2Image,
   },
   {
     id: 3,
@@ -27,7 +30,7 @@ const posts = [
     comments: 32,
     day: '05',
     month: 'Jan',
-    img: 'src/assets/img/blog/3.jpg',
+    img: blog_3Image,
   },
 ];
 

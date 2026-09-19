@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import shop3 from "../assets/img/shop3.jpg";
+import shop2 from "../assets/img/shop2.jpg";
 
 export default function About() {
   return (
@@ -17,10 +19,10 @@ export default function About() {
                 </small>
               </div>
               <div className="amain">
-                <img src="src/assets/img/shop3.jpg" alt="Restaurant" />
+                <img src={shop3} alt="Restaurant" />
               </div>
               <div className="asm">
-                <img src="src/assets/img/shop2.jpg" alt="Kitchen" />
+                <img src={shop2} alt="Kitchen" />
               </div>
             </div>
           </div>

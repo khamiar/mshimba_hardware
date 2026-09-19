@@ -1,10 +1,14 @@
+import staff_1Image from "../assets/img/staff/1.jpg";
+import staff_2Image from "../assets/img/staff/2.jpg";
+import staff_3Image from "../assets/img/staff/3.jpg";
+import staff_4Image from "../assets/img/staff/4.jpg";
 const staff = [
   {
     id: 1,
     name: "Alice Mortal",
     role: "Head Chef",
     experience: "12 years experience",
-    img: "src/assets/img/staff/1.jpg",
+    img: staff_1Image,
     delay: 0,
   },
   {
@@ -12,7 +16,7 @@ const staff = [
     name: "Michael Corn",
     role: "Grill Master",
     experience: "8 years experience",
-    img: "src/assets/img/staff/2.jpg",
+    img: staff_2Image,
     delay: 80,
   },
   {
@@ -20,7 +24,7 @@ const staff = [
     name: "Faz Chowdel",
     role: "Pastry Chef",
     experience: "10 years experience",
-    img: "src/assets/img/staff/3.jpg",
+    img: staff_3Image,
     delay: 160,
   },
   {
@@ -28,7 +32,7 @@ const staff = [
     name: "William Latnum",
     role: "Pizza Artisan",
     experience: "9 years experience",
-    img: "src/assets/img/staff/4.jpg",
+    img: staff_4Image,
     delay: 240,
   },
 ];

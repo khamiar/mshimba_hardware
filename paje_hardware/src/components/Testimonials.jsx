@@ -1,3 +1,4 @@
+import profile1Image from "../assets/img/profile1.jpeg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -9,56 +10,56 @@ const testimonials = [
     name: "Khamiar Mshimba",
     role: "Customer",
     text: "Huduma nzuri sana na vifaa vya ujenzi vinapatikana kwa bei nzuri. Wafanyakazi wana ushirikiano mzuri na wanasaidia kuchagua bidhaa sahihi. Nashauri sana MSHIMBA HARDWARE.",
-    img: "src/assets/img/profile1.jpeg",
+    img: profile1Image,
   },
   {
     id: 2,
     name: "Hilda Mshimba",
     role: "Customer",
     text: "Very reliable hardware store with good customer care. I found everything I needed quickly, and the service was fast and organized.",
-    img: "src/assets/img/profile1.jpeg",
+    img: profile1Image,
   },
   {
     id: 3,
     name: "Fatma Abbas",
     role: "Customer",
     text: "Top quality building materials with fair price. Very satisfied.",
-    img: "src/assets/img/profile1.jpeg",
+    img: profile1Image,
   },
   {
     id: 4,
     name: "Aniceth Mapande",
     role: "Customer",
     text: "Keep moving forward with more success.",
-    img: "src/assets/img/profile1.jpeg",
+    img: profile1Image,
   },
   {
     id: 5,
     name: "Ali Karim",
     role: "Customer",
     text: "Good things.",
-    img: "src/assets/img/profile1.jpeg",
+    img: profile1Image,
   },
   {
     id: 6,
     name: "Muhamed Rashid",
     role: "Customer",
     text: "Nice shop. Bigup Mshimba SOS.",
-    img: "src/assets/img/profile1.jpeg",
+    img: profile1Image,
   },
   {
     id: 7,
     name: "Muhammed Kombo",
     role: "Customer",
     text: "Mashallah.",
-    img: "src/assets/img/profile1.jpeg",
+    img: profile1Image,
   },
   {
     id: 8,
     name: "Secilia Abdul",
     role: "Customer",
     text: "Thank you for supporting Mshimba Hardware. We truly appreciate your review and welcome you again anytime.",
-    img: "src/assets/img/profile1.jpeg",
+    img: profile1Image,
   },
 ];
 
